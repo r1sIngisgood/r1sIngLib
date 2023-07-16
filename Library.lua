@@ -202,7 +202,7 @@ function lib:CreateWindow(guiName)
             newDividerText.Position = UDim2.new(1, 0, 0, 0)
             newDividerText.Size = UDim2.new(1, -5, 1, 0)
             newDividerText.Font = Enum.Font.SourceSansLight
-            newDividerText.Text = "A Divider"
+            newDividerText.Text = Text
             newDividerText.TextColor3 = Color3.new(1, 1, 1)
             newDividerText.TextScaled = true
             newDividerText.TextSize = 14
