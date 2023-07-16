@@ -13,6 +13,9 @@ function lib:CreateWindow(guiName)
     local ScrollingFrame = Instance.new("ScrollingFrame", TabFrame)
     local UIListLayout_2 = Instance.new("UIListLayout", ScrollingFrame)
 
+    local TabsTemp = Instance.new("Folder", game.CoreGui)
+    TabsTemp.Name = "TabsTemp"
+
     MainBackground.Name = "MainBackground"
     MainBackground.BackgroundColor3 = Color3.new(0, 0, 0)
     MainBackground.BackgroundTransparency = 0.375
@@ -85,27 +88,31 @@ function lib:CreateWindow(guiName)
 
     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-    UIListLayout_2.Parent = ScrollingFrame
-    UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
-    UIListLayout_2.Padding = UDim.new(0, 5)
-
     Window.Parent = game.CoreGui
 
-    local Windowlib = {}
+    local TabsTable = {}
+    local CurrentTab = TabFrame
+    local function switchTab(Tab)
+        if TabsTable == {} then return end
+        if not TabsTable[Tab] then return end
+        if CurrentTab then TabsTable[CurrentTab].Parent = TabsTemp end
 
-    function Windowlib:CreatetTab(Text, Callback)
-        if not (type(Callback) == "function") then Callback = function()end end
-        if not (type(Text) == "string") then Text = "" end
+        TabsTable[Tab].Parent = MainBackground
+    end
+
+    local Windowlib = {}
+    function Windowlib:CreateTab(TabName)
+        if not (type(TabName) == "string") then TabName = "" end
 
         local Button = Instance.new("TextButton", List)
-        Button.Name = Text
+        Button.Name = TabName
         Button.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
         Button.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
         Button.BorderSizePixel = 0
         Button.Size = UDim2.new(1.00364947, 0, 0.0196278561, 30)
         Button.AutoButtonColor = false
         Button.Font = Enum.Font.SourceSansLight
-        Button.Text = "Text"
+        Button.Text = TabName
         Button.TextColor3 = Color3.new(1, 1, 1)
         Button.TextScaled = true
         Button.TextSize = 24
@@ -113,7 +120,35 @@ function lib:CreateWindow(guiName)
         Button.TextStrokeTransparency = 0.949999988079071
         Button.TextWrapped = true
 
-        Button.MouseButton1Click:Connect(Callback)
+        local itTabFrame = Instance.new("Frame")
+        itTabFrame.AnchorPoint = Vector2.new(1, 0)
+        itTabFrame.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+        itTabFrame.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+        itTabFrame.BorderSizePixel = 2
+        itTabFrame.ClipsDescendants = true
+        itTabFrame.LayoutOrder = 1
+        itTabFrame.Position = UDim2.new(1, 0, 0.125, 0)
+        itTabFrame.Size = UDim2.new(0.75, 0, -0.216428578, 350)
+        itTabFrame.ZIndex = 2
+
+        local itScrollingFrame = Instance.new("ScrollingFrame", itTabFrame)
+        itScrollingFrame.Active = true
+        itScrollingFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+        itScrollingFrame.BackgroundTransparency = 1
+        itScrollingFrame.BorderColor3 = Color3.new(0, 0, 0)
+        itScrollingFrame.BorderSizePixel = 0
+        itScrollingFrame.Position = UDim2.new(0.00484848488, 0, 0.00729261618, 0)
+        itScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
+
+        local itUiListLayout = Instance.new("UIListLayout", itScrollingFrame)
+        itUiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        itUiListLayout.Padding = UDim.new(0, 5)
+        
+        TabsTable[Button.Name] = itTabFrame
+        if table.maxn(TabsTable) == 1 then switchTab(TabName) end
+        Button.MouseButton1Click:Connect(function()
+            switchTab(TabName)
+        end)
     end
     return Windowlib
 end
