@@ -1,3 +1,5 @@
+local TweenService = game:GetService("TweenService")
+
 local lib = {}
 
 function lib:CreateWindow(guiName)
@@ -100,25 +102,24 @@ function lib:CreateWindow(guiName)
     end
 
     local Windowlib = {}
+
     function Windowlib:CreateTab(TabName)
         if not (type(TabName) == "string") then TabName = "" end
-
-        local Button = Instance.new("TextButton", List)
-        Button.Name = TabName
-        Button.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
-        Button.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
-        Button.BorderSizePixel = 0
-        Button.Size = UDim2.new(1.00364947, 0, 0.0196278561, 30)
-        Button.AutoButtonColor = false
-        Button.Font = Enum.Font.SourceSansLight
-        Button.Text = TabName
-        Button.TextColor3 = Color3.new(1, 1, 1)
-        Button.TextScaled = true
-        Button.TextSize = 24
-        Button.TextStrokeColor3 = Color3.new(1, 1, 1)
-        Button.TextStrokeTransparency = 0.949999988079071
-        Button.TextWrapped = true
-
+        local tabButton = Instance.new("TextButton", List)
+        tabButton.Name = TabName
+        tabButton.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
+        tabButton.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+        tabButton.BorderSizePixel = 0
+        tabButton.Size = UDim2.new(1.00364947, 0, 0.0196278561, 30)
+        tabButton.AutoButtonColor = false
+        tabButton.Font = Enum.Font.SourceSansLight
+        tabButton.Text = TabName
+        tabButton.TextColor3 = Color3.new(1, 1, 1)
+        tabButton.TextScaled = true
+        tabButton.TextSize = 24
+        tabButton.TextStrokeColor3 = Color3.new(1, 1, 1)
+        tabButton.TextStrokeTransparency = 0.949999988079071
+        tabButton.TextWrapped = true
         local itTabFrame = Instance.new("Frame")
         itTabFrame.AnchorPoint = Vector2.new(1, 0)
         itTabFrame.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
@@ -129,7 +130,6 @@ function lib:CreateWindow(guiName)
         itTabFrame.Position = UDim2.new(1, 0, 0.125, 0)
         itTabFrame.Size = UDim2.new(0.75, 0, 0, 275)
         itTabFrame.ZIndex = 2
-
         local itScrollingFrame = Instance.new("ScrollingFrame", itTabFrame)
         itScrollingFrame.Active = true
         itScrollingFrame.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -138,14 +138,12 @@ function lib:CreateWindow(guiName)
         itScrollingFrame.BorderSizePixel = 0
         itScrollingFrame.Position = UDim2.new(0.00484848488, 0, 0.00729261618, 0)
         itScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
-
         local itUiListLayout = Instance.new("UIListLayout", itScrollingFrame)
         itUiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
         itUiListLayout.Padding = UDim.new(0, 5)
-        
-        TabsTable[Button.Name] = itTabFrame
+        TabsTable[tabButton.Name] = itTabFrame
         if table.maxn(TabsTable) == 1 then switchTab(TabName) end
-        Button.MouseButton1Click:Connect(function()
+        tabButton.MouseButton1Click:Connect(function()
             switchTab(TabName)
         end)
 
@@ -168,7 +166,119 @@ function lib:CreateWindow(guiName)
 
             newButton.MouseButton1Click:Connect(Callback)
         end
+        function Tablib:CreateDivider(Text)
+            if not (type(Text) == "string") then Text = "" end
+            local newDivider = Instance.new("Frame", itScrollingFrame)
+            newDivider.BackgroundColor3 = Color3.new(1, 1, 1)
+            newDivider.BackgroundTransparency = 1
+            newDivider.BorderColor3 = Color3.new(0, 0, 0)
+            newDivider.BorderSizePixel = 0
+            newDivider.Position = UDim2.new(0, 0, 0.136910275, 0)
+            newDivider.Size = UDim2.new(1, 0, 0, 27)
+            newDivider.ZIndex = 2
+
+            local newDividerText = Instance.new("TextLabel", newDivider)
+            newDividerText.AnchorPoint = Vector2.new(1, 0)
+            newDividerText.BackgroundColor3 = Color3.new(1, 1, 1)
+            newDividerText.BackgroundTransparency = 1
+            newDividerText.BorderColor3 = Color3.new(1, 1, 1)
+            newDividerText.BorderSizePixel = 0
+            newDividerText.Position = UDim2.new(1, 0, 0, 0)
+            newDividerText.Size = UDim2.new(1, -5, 1, 0)
+            newDividerText.Font = Enum.Font.SourceSansLight
+            newDividerText.Text = "A Divider"
+            newDividerText.TextColor3 = Color3.new(1, 1, 1)
+            newDividerText.TextScaled = true
+            newDividerText.TextSize = 14
+            newDividerText.TextWrapped = true
+            newDividerText.TextXAlignment = Enum.TextXAlignment.Left
+
+            local newDividerLine = Instance.new("Frame")
+            newDividerLine.BackgroundColor3 = Color3.new(0.639216, 0.639216, 0.639216)
+            newDividerLine.BorderColor3 = Color3.new(0, 0, 0)
+            newDividerLine.BorderSizePixel = 0
+            newDividerLine.Size = UDim2.new(1, 0, 0, 1)
+
+            newDivider.Name = Text
+            newDividerText.Text = Text
+        end
+        function Tablib:CreateToggle(Text, Callback, ...)
+            if not (type(Callback) == "function") then Callback = function()end end
+            local args = ...
+            local newToggleFrame = Instance.new("Frame", itScrollingFrame)
+            newToggleFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+            newToggleFrame.BackgroundTransparency = 1
+            newToggleFrame.BorderColor3 = Color3.new(0, 0, 0)
+            newToggleFrame.BorderSizePixel = 0
+            newToggleFrame.Position = UDim2.new(0, 0, 0.136910275, 0)
+            newToggleFrame.Size = UDim2.new(1, 0, 0, 27)
+            newToggleFrame.ZIndex = 2
+            local newToggleText = Instance.new("TextLabel", newToggleFrame)
+            newToggleText.AnchorPoint = Vector2.new(1, 0)
+            newToggleText.BackgroundColor3 = Color3.new(1, 1, 1)
+            newToggleText.BackgroundTransparency = 1
+            newToggleText.BorderColor3 = Color3.new(1, 1, 1)
+            newToggleText.BorderSizePixel = 0
+            newToggleText.Position = UDim2.new(1, 0, 0, 0)
+            newToggleText.Size = UDim2.new(0.879999995, -5, 1, 0)
+            newToggleText.Font = Enum.Font.SourceSansLight
+            newToggleText.Text = Text
+            newToggleText.TextColor3 = Color3.new(1, 1, 1)
+            newToggleText.TextScaled = true
+            newToggleText.TextSize = 14
+            newToggleText.TextWrapped = true
+            newToggleText.TextXAlignment = Enum.TextXAlignment.Left
+            local newToggleButton = Instance.new("TextButton", newToggleFrame)
+            newToggleButton.BackgroundColor3 = Color3.new(0.478431, 0.478431, 0.478431)
+            newToggleButton.BackgroundTransparency = 1
+            newToggleButton.BorderColor3 = Color3.new(0, 0, 0)
+            newToggleButton.BorderSizePixel = 0
+            newToggleButton.Position = UDim2.new(0, 5, 0, 0)
+            newToggleButton.Size = UDim2.new(-0.022127308, 50, 1, 0)
+            newToggleButton.AutoButtonColor = false
+            newToggleButton.Font = Enum.Font.SourceSans
+            newToggleButton.Text = ""
+            newToggleButton.TextColor3 = Color3.new(0, 0, 0)
+            newToggleButton.TextSize = 14
+            local newToggleButtonUICorner = Instance.new("UICorner", newToggleButton)
+            newToggleButtonUICorner.CornerRadius = UDim.new(1,0)
+            local newToggleBack = Instance.new("Frame", newToggleButton)
+            newToggleBack.AnchorPoint = Vector2.new(0, 0.5)
+            newToggleBack.BackgroundColor3 = Color3.new(0.478431, 0.478431, 0.478431)
+            newToggleBack.BorderColor3 = Color3.new(0, 0, 0)
+            newToggleBack.BorderSizePixel = 0
+            newToggleBack.Position = UDim2.new(0, 0, 0.5, 0)
+            newToggleBack.Size = UDim2.new(0, 40, 0, 15)
+            local newToggleBackUICorner = Instance.new("UICorner", newToggleBack)
+            newToggleBackUICorner.CornerRadius = UDim.new(1,0)
+            local newToggleCircle = Instance.new("Frame", newToggleButton)
+            newToggleCircle.Name = "Circle"
+            newToggleCircle.AnchorPoint = Vector2.new(1, 0.5)
+            newToggleCircle.BackgroundColor3 = Color3.new(1, 1, 1)
+            newToggleCircle.BorderColor3 = Color3.new(0, 0, 0)
+            newToggleCircle.BorderSizePixel = 0
+            newToggleCircle.Position = UDim2.new(0.5, 0, 0.5, 0)
+            newToggleCircle.Size = UDim2.new(0, 100, 0, 25)
+            local newCircleAspectRatio = Instance.new("UIAspectRatioConstraint", newToggleCircle)
+            local newCircleUICorner = Instance.new("UICorner", newToggleCircle)
+            newCircleUICorner.CornerRadius = UDim.new(1,0)
+
+            local defaultState = args[1]
+            local newToggleState = Instance.new("BoolValue", newToggleButton)
+            if defaultState then newToggleState.Value = defaultState end
+            
+            local stateTable = {[true] = UDim2.new(1,0,.5,0), [false] = UDim2.new(.5,0,.5,0)}
+            newToggleButton.MouseButton1Click:Connect(function()
+                newToggleState.Value = not newToggleState.Value
+                TweenService:Create(newToggleCircle, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {Position = stateTable[newToggleState.Value]}):Play()
+                Callback(newToggleState.Value)
+            end)
+            return newToggleState
+        end
         return Tablib
+    end
+    function Windowlib:ChangeName(Text)
+        GuiName.Text = Text
     end
     return Windowlib
 end
