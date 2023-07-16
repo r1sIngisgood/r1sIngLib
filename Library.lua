@@ -132,7 +132,6 @@ function lib:CreateWindow(guiName)
         itTabFrame.ZIndex = 2
         local itScrollingFrame = Instance.new("ScrollingFrame", itTabFrame)
         itScrollingFrame.Active = true
-        itScrollingFrame.BackgroundColor3 = Color3.new(1, 1, 1)
         itScrollingFrame.BackgroundTransparency = 1
         itScrollingFrame.BorderColor3 = Color3.new(0, 0, 0)
         itScrollingFrame.BorderSizePixel = 0
@@ -150,7 +149,16 @@ function lib:CreateWindow(guiName)
         local Tablib = {}
         function Tablib:CreateButton(Text, Callback)
             if not (type(Callback) == "function") then Callback = function()end end
-            local newButton = Instance.new("TextButton", itScrollingFrame)
+            local newButtonFrame = Instance.new("Frame", itScrollingFrame)
+            newButtonFrame.Parent = itScrollingFrame
+            newButtonFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+            newButtonFrame.BackgroundTransparency = 1
+            newButtonFrame.BorderColor3 = Color3.new(0, 0, 0)
+            newButtonFrame.BorderSizePixel = 0
+            newButtonFrame.Size = UDim2.new(0.967999995, 0, 0, 27)
+            newButtonFrame.ZIndex = 2
+
+            local newButton = Instance.new("TextButton", newButtonFrame)
             newButton.BackgroundColor3 = Color3.new(1, 1, 1)
             newButton.BorderColor3 = Color3.new(0, 0, 0)
             newButton.BorderSizePixel = 0
@@ -164,7 +172,7 @@ function lib:CreateWindow(guiName)
             newButton.TextSize = 24
             newButton.TextWrapped = true
 
-            local newButtonText = Instance.new("TextLabel")
+            local newButtonText = Instance.new("TextLabel", newButtonFrame)
             newButtonText.AnchorPoint = Vector2.new(1, 0)
             newButtonText.BackgroundColor3 = Color3.new(1, 1, 1)
             newButtonText.BackgroundTransparency = 1
