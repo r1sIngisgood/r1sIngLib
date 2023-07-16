@@ -120,7 +120,7 @@ function lib:CreateWindow(guiName)
         tabButton.TextStrokeColor3 = Color3.new(1, 1, 1)
         tabButton.TextStrokeTransparency = 0.949999988079071
         tabButton.TextWrapped = true
-        local itTabFrame = Instance.new("Frame")
+        local itTabFrame = Instance.new("Frame", TabsTemp)
         itTabFrame.AnchorPoint = Vector2.new(1, 0)
         itTabFrame.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
         itTabFrame.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
@@ -155,14 +155,14 @@ function lib:CreateWindow(guiName)
             newButtonFrame.BackgroundTransparency = 1
             newButtonFrame.BorderColor3 = Color3.new(0, 0, 0)
             newButtonFrame.BorderSizePixel = 0
-            newButtonFrame.Size = UDim2.new(0.967999995, 0, 0, 27)
+            newButtonFrame.Size = UDim2.new(1, 0, 0, 27)
             newButtonFrame.ZIndex = 2
 
             local newButton = Instance.new("TextButton", newButtonFrame)
             newButton.BackgroundColor3 = Color3.new(1, 1, 1)
             newButton.BorderColor3 = Color3.new(0, 0, 0)
             newButton.BorderSizePixel = 0
-            newButton.Size = UDim2.new(0.0644376874, 0, 1, 0)
+            newButton.Size = UDim2.new(0.065, 0, 1, 0)
             newButton.ZIndex = 2
             newButton.AutoButtonColor = false
             newButton.Font = Enum.Font.SourceSansLight
@@ -178,8 +178,8 @@ function lib:CreateWindow(guiName)
             newButtonText.BackgroundTransparency = 1
             newButtonText.BorderColor3 = Color3.new(0, 0, 0)
             newButtonText.BorderSizePixel = 0
-            newButtonText.Position = UDim2.new(1.00000012, 0, 0, 0)
-            newButtonText.Size = UDim2.new(0.935000002, -5, 1, 0)
+            newButtonText.Position = UDim2.new(1, 0, 0, 0)
+            newButtonText.Size = UDim2.new(0.935, -5, 1, 0)
             newButtonText.Font = Enum.Font.SourceSansLight
             newButtonText.Text = Text
             newButtonText.TextColor3 = Color3.new(1, 1, 1)
