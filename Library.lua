@@ -91,12 +91,13 @@ function lib:CreateWindow(guiName)
     Window.Parent = game.CoreGui
 
     local TabsTable = {}
-    local CurrentTab = TabFrame
+    local CurrentTab = nil
     local function switchTab(Tab)
         if TabsTable == {} then return end
         if not TabsTable[Tab] then return end
         if CurrentTab then TabsTable[CurrentTab].Parent = TabsTemp end
 
+        TabName.Text = Tab
         TabsTable[Tab].Parent = MainBackground
     end
 
