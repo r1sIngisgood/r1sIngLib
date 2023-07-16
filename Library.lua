@@ -80,7 +80,7 @@ function lib:CreateWindow(guiName)
     List.BackgroundTransparency = 1
     List.BorderColor3 = Color3.new(0, 0, 0)
     List.BorderSizePixel = 0
-    List.Size = UDim2.new(1, 0, 0.939999998, 0)
+    List.Size = UDim2.new(1, 0, 1, 0)
     List.ZIndex = 2
 
     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -148,6 +148,26 @@ function lib:CreateWindow(guiName)
         Button.MouseButton1Click:Connect(function()
             switchTab(TabName)
         end)
+
+        local Tablib = {}
+        function Tablib:CreateButton(Callback)
+            if not (type(Callback) == "function") then Callback = function()end end
+            local newButton = Instance.new("TextButton", itScrollingFrame)
+            newButton.BackgroundColor3 = Color3.new(1, 1, 1)
+            newButton.BorderColor3 = Color3.new(0, 0, 0)
+            newButton.BorderSizePixel = 0
+            newButton.Size = UDim2.new(0.0644376874, 0, 1, 0)
+            newButton.ZIndex = 2
+            newButton.AutoButtonColor = false
+            newButton.Font = Enum.Font.SourceSansLight
+            newButton.Text = ""
+            newButton.TextColor3 = Color3.new(0, 0, 0)
+            newButton.TextScaled = true
+            newButton.TextSize = 24
+            newButton.TextWrapped = true
+
+            newButton.MouseButton1Click:Connect(Callback)
+        end
     end
     return Windowlib
 end
