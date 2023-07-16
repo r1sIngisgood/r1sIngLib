@@ -72,7 +72,7 @@ function lib:CreateWindow(guiName)
     Tabs.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
     Tabs.BorderSizePixel = 2
     Tabs.ClipsDescendants = true
-    Tabs.Position = UDim2.new(0, 0, 0.122857146, 0)
+    Tabs.Position = UDim2.new(0, 0, 0.125, 0)
     Tabs.Size = UDim2.new(0.25, 0, 0, 275)
 
     List.Name = "List"
