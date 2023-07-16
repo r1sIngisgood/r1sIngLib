@@ -9,9 +9,6 @@ function lib:CreateWindow(guiName)
     local Tabs = Instance.new("Frame", MainBackground)
     local List = Instance.new("Frame", Tabs)
     local UIListLayout = Instance.new("UIListLayout", List)
-    local TabFrame = Instance.new("Frame", MainBackground)
-    local ScrollingFrame = Instance.new("ScrollingFrame", TabFrame)
-    local UIListLayout_2 = Instance.new("UIListLayout", ScrollingFrame)
 
     local TabsTemp = Instance.new("Folder", game.CoreGui)
     TabsTemp.Name = "TabsTemp"
@@ -76,7 +73,7 @@ function lib:CreateWindow(guiName)
     Tabs.BorderSizePixel = 2
     Tabs.ClipsDescendants = true
     Tabs.Position = UDim2.new(0, 0, 0.122857146, 0)
-    Tabs.Size = UDim2.new(0, 139, 0, 275)
+    Tabs.Size = UDim2.new(0.25, 0, 0, 275)
 
     List.Name = "List"
     List.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -130,7 +127,7 @@ function lib:CreateWindow(guiName)
         itTabFrame.ClipsDescendants = true
         itTabFrame.LayoutOrder = 1
         itTabFrame.Position = UDim2.new(1, 0, 0.125, 0)
-        itTabFrame.Size = UDim2.new(0.75, 0, -0.216428578, 350)
+        itTabFrame.Size = UDim2.new(0.75, 0, 0, 275)
         itTabFrame.ZIndex = 2
 
         local itScrollingFrame = Instance.new("ScrollingFrame", itTabFrame)
