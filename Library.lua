@@ -5,8 +5,6 @@ function lib:CreateWindow(guiName)
     local MainBackground = Instance.new("Frame", Window)
     local TopBar = Instance.new("Frame", MainBackground )
     local GuiName = Instance.new("TextLabel", TopBar)
-    local shadow = Instance.new("Frame", TopBar)
-    local shadow_2 = Instance.new("Frame", MainBackground)
     local TabName = Instance.new("TextLabel", TopBar)
     local Tabs = Instance.new("Frame", MainBackground)
     local List = Instance.new("Frame", Tabs)
@@ -50,13 +48,6 @@ function lib:CreateWindow(guiName)
     GuiName.TextWrapped = true
     GuiName.TextYAlignment = Enum.TextYAlignment.Bottom
 
-    shadow.Name = "shadow"
-    shadow.BackgroundColor3 = Color3.new(1, 1, 1)
-    shadow.BorderColor3 = Color3.new(0, 0, 0)
-    shadow.BorderSizePixel = 0
-    shadow.Position = UDim2.new(0, 0, 0.302325577, 0)
-    shadow.Size = UDim2.new(0, 550, 0, 30)
-
     TabName.Name = "TabName"
     TabName.AnchorPoint = Vector2.new(0, 0.5)
     TabName.BackgroundColor3 = Color3.new(0, 0, 0)
@@ -98,13 +89,6 @@ function lib:CreateWindow(guiName)
     UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
     UIListLayout_2.Padding = UDim.new(0, 5)
 
-    shadow_2.Name = "shadow"
-    shadow_2.BackgroundColor3 = Color3.new(1, 1, 1)
-    shadow_2.BorderColor3 = Color3.new(0, 0, 0)
-    shadow_2.BorderSizePixel = 0
-    shadow_2.Position = UDim2.new(0, 0, 0.908571422, 0)
-    shadow_2.Size = UDim2.new(0, 550, 0, 20)
-
     Window.Parent = game.CoreGui
 
     local Windowlib = {}
@@ -133,5 +117,4 @@ function lib:CreateWindow(guiName)
     end
     return Windowlib
 end
-
 return lib
