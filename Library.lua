@@ -94,6 +94,10 @@ function lib:CreateWindow(guiName)
 
     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
+    UIListLayout_2.Parent = ScrollingFrame
+    UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+    UIListLayout_2.Padding = UDim.new(0, 5)
+
     shadow_2.Name = "shadow"
     shadow_2.BackgroundColor3 = Color3.new(1, 1, 1)
     shadow_2.BorderColor3 = Color3.new(0, 0, 0)
@@ -101,15 +105,16 @@ function lib:CreateWindow(guiName)
     shadow_2.Position = UDim2.new(0, 0, 0.908571422, 0)
     shadow_2.Size = UDim2.new(0, 550, 0, 20)
 
+    Window.Parent = game.CoreGui
+
     local Windowlib = {}
 
-    function Windowlib:CreateButton(Text, Callback)
+    function Windowlib:CreatetTab(Text, Callback)
         if not (type(Callback) == "function") then Callback = function()end end
         if not (type(Text) == "string") then Text = "" end
 
-        local Button = Instance.new("TextButton")
+        local Button = Instance.new("TextButton", List)
         Button.Name = Text
-        Button.Parent = List
         Button.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
         Button.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
         Button.BorderSizePixel = 0
@@ -126,4 +131,7 @@ function lib:CreateWindow(guiName)
 
         Button.MouseButton1Click:Connect(Callback)
     end
+    return Windowlib
 end
+
+return lib
