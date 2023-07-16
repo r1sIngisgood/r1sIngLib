@@ -220,6 +220,9 @@ function lib:CreateWindow(guiName)
         end
         function Tablib:CreateToggle(Text, Callback, defaultState)
             if not (type(Callback) == "function") then Callback = function()end end
+            if not (type(Text) == "string") then Text = "" end
+            if not (type(defaultState) == "boolean") then defaultState = false end
+            
             local newToggleFrame = Instance.new("Frame", itScrollingFrame)
             newToggleFrame.BackgroundColor3 = Color3.new(1, 1, 1)
             newToggleFrame.BackgroundTransparency = 1
