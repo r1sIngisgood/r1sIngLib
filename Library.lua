@@ -98,6 +98,7 @@ function lib:CreateWindow(guiName)
         if CurrentTab ~= nil then TabsTable[CurrentTab].Parent = TabsTemp end
 
         TabName.Text = Tab
+        CurrentTab = Tab
         TabsTable[Tab].Parent = MainBackground
     end
 
