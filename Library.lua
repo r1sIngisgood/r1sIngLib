@@ -95,7 +95,7 @@ function lib:CreateWindow(guiName)
     local function switchTab(Tab)
         if TabsTable == {} then return end
         if not TabsTable[Tab] then return end
-        if CurrentTab then TabsTable[CurrentTab].Parent = TabsTemp end
+        if CurrentTab ~= nil then TabsTable[CurrentTab].Parent = TabsTemp end
 
         TabName.Text = Tab
         TabsTable[Tab].Parent = MainBackground
