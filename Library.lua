@@ -218,9 +218,8 @@ function lib:CreateWindow(guiName)
             newDivider.Name = Text
             newDividerText.Text = Text
         end
-        function Tablib:CreateToggle(Text, Callback, ...)
+        function Tablib:CreateToggle(Text, Callback, defaultState)
             if not (type(Callback) == "function") then Callback = function()end end
-            local args = ...
             local newToggleFrame = Instance.new("Frame", itScrollingFrame)
             newToggleFrame.BackgroundColor3 = Color3.new(1, 1, 1)
             newToggleFrame.BackgroundTransparency = 1
@@ -279,7 +278,6 @@ function lib:CreateWindow(guiName)
             local newCircleUICorner = Instance.new("UICorner", newToggleCircle)
             newCircleUICorner.CornerRadius = UDim.new(1,0)
 
-            local defaultState = args[1]
             local newToggleState = Instance.new("BoolValue", newToggleButton)
             if defaultState then newToggleState.Value = defaultState end
             
