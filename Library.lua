@@ -148,7 +148,7 @@ function lib:CreateWindow(guiName)
         end)
 
         local Tablib = {}
-        function Tablib:CreateButton(Callback)
+        function Tablib:CreateButton(Text, Callback)
             if not (type(Callback) == "function") then Callback = function()end end
             local newButton = Instance.new("TextButton", itScrollingFrame)
             newButton.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -163,6 +163,22 @@ function lib:CreateWindow(guiName)
             newButton.TextScaled = true
             newButton.TextSize = 24
             newButton.TextWrapped = true
+
+            local newButtonText = Instance.new("TextLabel")
+            newButtonText.AnchorPoint = Vector2.new(1, 0)
+            newButtonText.BackgroundColor3 = Color3.new(1, 1, 1)
+            newButtonText.BackgroundTransparency = 1
+            newButtonText.BorderColor3 = Color3.new(0, 0, 0)
+            newButtonText.BorderSizePixel = 0
+            newButtonText.Position = UDim2.new(1.00000012, 0, 0, 0)
+            newButtonText.Size = UDim2.new(0.935000002, -5, 1, 0)
+            newButtonText.Font = Enum.Font.SourceSansLight
+            newButtonText.Text = Text
+            newButtonText.TextColor3 = Color3.new(1, 1, 1)
+            newButtonText.TextScaled = true
+            newButtonText.TextSize = 14
+            newButtonText.TextWrapped = true
+            newButtonText.TextXAlignment = Enum.TextXAlignment.Left
 
             newButton.MouseButton1Click:Connect(Callback)
         end
