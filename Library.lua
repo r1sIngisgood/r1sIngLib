@@ -168,6 +168,7 @@ function lib:CreateWindow(guiName)
 
             newButton.MouseButton1Click:Connect(Callback)
         end
+        return Tablib
     end
     return Windowlib
 end
