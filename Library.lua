@@ -228,12 +228,14 @@ function lib:NewWindow(guiName)
             newDividerText.TextSize = 14
             newDividerText.TextWrapped = true
             newDividerText.TextXAlignment = Enum.TextXAlignment.Left
+            newDividerText.ZIndex = 2
 
             local newDividerLine = Instance.new("Frame", newDivider)
             newDividerLine.BackgroundColor3 = Color3.new(0.639216, 0.639216, 0.639216)
             newDividerLine.BorderColor3 = Color3.new(0, 0, 0)
             newDividerLine.BorderSizePixel = 0
             newDividerLine.Size = UDim2.new(1, 0, 0, 1)
+            newDividerLine.ZIndex = 2
 
             newDivider.Name = Text
             newDividerText.Text = Text
@@ -265,6 +267,7 @@ function lib:NewWindow(guiName)
             newToggleText.TextSize = 14
             newToggleText.TextWrapped = true
             newToggleText.TextXAlignment = Enum.TextXAlignment.Left
+            newToggleText.ZIndex = 2
             local newToggleButton = Instance.new("TextButton", newToggleFrame)
             newToggleButton.BackgroundColor3 = Color3.new(0.478431, 0.478431, 0.478431)
             newToggleButton.BackgroundTransparency = 1
@@ -277,6 +280,7 @@ function lib:NewWindow(guiName)
             newToggleButton.Text = ""
             newToggleButton.TextColor3 = Color3.new(0, 0, 0)
             newToggleButton.TextSize = 14
+            newToggleButton.ZIndex = 4
             local newToggleButtonUICorner = Instance.new("UICorner", newToggleButton)
             newToggleButtonUICorner.CornerRadius = UDim.new(1,0)
             local newToggleBack = Instance.new("Frame", newToggleButton)
@@ -286,6 +290,7 @@ function lib:NewWindow(guiName)
             newToggleBack.BorderSizePixel = 0
             newToggleBack.Position = UDim2.new(0, 0, 0.5, 0)
             newToggleBack.Size = UDim2.new(0, 40, 0, 15)
+            newToggleBack.ZIndex = 2
             local newToggleBackUICorner = Instance.new("UICorner", newToggleBack)
             newToggleBackUICorner.CornerRadius = UDim.new(1,0)
             local newToggleCircle = Instance.new("Frame", newToggleButton)
@@ -296,6 +301,7 @@ function lib:NewWindow(guiName)
             newToggleCircle.BorderSizePixel = 0
             newToggleCircle.Position = UDim2.new(0.5, 0, 0.5, 0)
             newToggleCircle.Size = UDim2.new(0, 100, 0, 25)
+            newToggleCircle.ZIndex = 3
             local newCircleAspectRatio = Instance.new("UIAspectRatioConstraint", newToggleCircle)
             local newCircleUICorner = Instance.new("UICorner", newToggleCircle)
             newCircleUICorner.CornerRadius = UDim.new(1,0)
