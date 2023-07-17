@@ -13,10 +13,10 @@ function lib:NewWindow(guiName)
     if not (type(guiName) == "string") then guiName = "r1sIngLib" end
 
     local Window = Instance.new("ScreenGui", game.CoreGui)
-    local MainBackground = Instance.new("Frame", Window)
-    local TopBar = Instance.new("Frame", MainBackground )
+    local TopBar = Instance.new("Frame", Window)
+    local MainBackground = Instance.new("Frame", TopBar)
+    local CloseButton = Instance.new("ImageButton", TopBar)
     local GuiName = Instance.new("TextLabel", TopBar)
-    local TabName = Instance.new("TextLabel", TopBar)
     local Tabs = Instance.new("Frame", MainBackground)
     local List = Instance.new("Frame", Tabs)
     local UIListLayout = Instance.new("UIListLayout", List)
@@ -29,16 +29,27 @@ function lib:NewWindow(guiName)
     MainBackground.BackgroundTransparency = 0.375
     MainBackground.BorderColor3 = Color3.new(0, 0, 0)
     MainBackground.BorderSizePixel = 0
-    MainBackground.Position = UDim2.new(0.325949371, 0, 0.199021786, 0)
-    MainBackground.Size = UDim2.new(0, 550, 0, 350)
+    MainBackground.Position = UDim2.new(0, 0, 1, 0)
+    MainBackground.Size = UDim2.new(1, 0, 0, 350)
+    MainBackground.ClipsDescendants = true
 
     TopBar.Name = "TopBar"
-    TopBar.BackgroundColor3 = Color3.new(0, 0, 0)
-    TopBar.BackgroundTransparency = 1
-    TopBar.BorderColor3 = Color3.new(0, 0, 0)
-    TopBar.BorderSizePixel = 0
-    TopBar.ClipsDescendants = true
-    TopBar.Size = UDim2.new(0, 550, 0, 43)
+    TopBar.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+    TopBar.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+    TopBar.BorderSizePixel = 2
+    TopBar.Position = UDim2.new(0.25, 0, 0.25, 0)
+    TopBar.Size = UDim2.new(0, 550, 0, 40)
+
+    CloseButton.Name = "CloseButton"
+    CloseButton.Parent = TopBar
+    CloseButton.AnchorPoint = Vector2.new(1, 0.5)
+    CloseButton.BackgroundColor3 = Color3.new(1, 1, 1)
+    CloseButton.BackgroundTransparency = 1
+    CloseButton.BorderColor3 = Color3.new(0, 0, 0)
+    CloseButton.BorderSizePixel = 0
+    CloseButton.Position = UDim2.new(1, -5, 0.546999991, 0)
+    CloseButton.Size = UDim2.new(0, 35, 0, 35)
+    CloseButton.Image = "http://www.roblox.com/asset/?id=14097204007"
 
     GuiName.Name = "GuiName"
     GuiName.AnchorPoint = Vector2.new(0, 0.5)
@@ -58,25 +69,6 @@ function lib:NewWindow(guiName)
     GuiName.TextStrokeTransparency = 0.949999988079071
     GuiName.TextWrapped = true
     GuiName.TextYAlignment = Enum.TextYAlignment.Bottom
-
-    TabName.Name = "TabName"
-    TabName.AnchorPoint = Vector2.new(0, 0.5)
-    TabName.BackgroundColor3 = Color3.new(0, 0, 0)
-    TabName.BackgroundTransparency = 1
-    TabName.BorderColor3 = Color3.new(0, 0, 0)
-    TabName.BorderSizePixel = 0
-    TabName.Position = UDim2.new(0.375, 0, 0.545000017, 0)
-    TabName.Size = UDim2.new(0.5, 0, 1, 0)
-    TabName.ZIndex = 2
-    TabName.Font = Enum.Font.SourceSansLight
-    TabName.Text = "Tab"
-    TabName.TextColor3 = Color3.new(1, 1, 1)
-    TabName.TextScaled = true
-    TabName.TextSize = 14
-    TabName.TextStrokeColor3 = Color3.new(1, 1, 1)
-    TabName.TextStrokeTransparency = 0.949999988079071
-    TabName.TextWrapped = true
-    TabName.TextYAlignment = Enum.TextYAlignment.Bottom
 
     Tabs.Name = "Tabs"
     Tabs.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
@@ -103,10 +95,11 @@ function lib:NewWindow(guiName)
         if not TabsTable[Tab] then return end
         if CurrentTab ~= nil then TabsTable[CurrentTab].Parent = TabsTemp end
 
-        TabName.Text = Tab
         CurrentTab = Tab
         TabsTable[Tab].Parent = MainBackground
     end
+
+    --Ui Closing
 
     --Dragging
     local Holding = false
@@ -123,10 +116,10 @@ function lib:NewWindow(guiName)
         MainBackground.Position = UIInitPos - UDim2.new(0, distMovedX, 0, distMovedY)
     end
 
-    MainBackground.MouseEnter:Connect(function()
+    TopBar.MouseEnter:Connect(function()
         Hovered = true
     end)
-    MainBackground.MouseLeave:Connect(function()
+    TopBar.MouseLeave:Connect(function()
         Hovered = false
     end)
     UserInputService.InputBegan:Connect(function(input)
@@ -176,13 +169,48 @@ function lib:NewWindow(guiName)
         itTabFrame.Position = UDim2.new(1, 0, 0.125, 0)
         itTabFrame.Size = UDim2.new(0.75, 0, 0, 275)
         itTabFrame.ZIndex = 2
+        local itTabNameFrame = Instance.new("Frame", itTabFrame)
+        itTabNameFrame.Name = "TabNameFrame"
+        itTabNameFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+        itTabNameFrame.BackgroundTransparency = 1
+        itTabNameFrame.BorderColor3 = Color3.new(0, 0, 0)
+        itTabNameFrame.BorderSizePixel = 0
+        itTabNameFrame.Position = UDim2.new(0, 0, 0, 0)
+        itTabNameFrame.Size = UDim2.new(1, 0, 0, 30)
+        local itTabName = Instance.new("TextLabel", itTabNameFrame)
+        itTabName.Name = "TabName"
+        itTabName.BackgroundColor3 = Color3.new(0, 0, 0)
+        itTabName.BackgroundTransparency = 1
+        itTabName.BorderColor3 = Color3.new(0, 0, 0)
+        itTabName.BorderSizePixel = 0
+        itTabName.Size = UDim2.new(1, 0, 1, 0)
+        itTabName.ZIndex = 2
+        itTabName.Font = Enum.Font.SourceSansLight
+        itTabName.Text = TabName
+        itTabName.TextColor3 = Color3.new(1, 1, 1)
+        itTabName.TextScaled = true
+        itTabName.TextSize = 14
+        itTabName.TextStrokeColor3 = Color3.new(1, 1, 1)
+        itTabName.TextStrokeTransparency = 0.95
+        itTabName.TextWrapped = true
+        itTabName.TextYAlignment = Enum.TextYAlignment.Bottom
+        local itTabLine = Instance.new("Frame", itTabNameFrame)
+        itTabLine.AnchorPoint = Vector2.new(0, 1)
+        itTabLine.BackgroundColor3 = Color3.new(1, 1, 1)
+        itTabLine.BorderColor3 = Color3.new(0, 0, 0)
+        itTabLine.BorderSizePixel = 0
+        itTabLine.Position = UDim2.new(0, 0, 1, 0)
+        itTabLine.Size = UDim2.new(1, -5, 0, 1)
         local itScrollingFrame = Instance.new("ScrollingFrame", itTabFrame)
         itScrollingFrame.Active = true
+        itScrollingFrame.ScrollBarThickness = 5
+        itScrollingFrame.ScrollBarImageColor3 = Color3.new(1,1,1)
+        itScrollingFrame.AnchorPoint = Vector2.new(0,1)
         itScrollingFrame.BackgroundTransparency = 1
         itScrollingFrame.BorderColor3 = Color3.new(0, 0, 0)
         itScrollingFrame.BorderSizePixel = 0
-        itScrollingFrame.Position = UDim2.new(0, 0, 0, 0)
-        itScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
+        itScrollingFrame.Position = UDim2.new(0, 0, 1, 0)
+        itScrollingFrame.Size = UDim2.new(1, -30, 1, 0)
         local itUiListLayout = Instance.new("UIListLayout", itScrollingFrame)
         itUiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
         itUiListLayout.Padding = UDim.new(0, 5)
