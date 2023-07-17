@@ -179,6 +179,7 @@ function lib:NewWindow(guiName)
             newButton.TextScaled = true
             newButton.TextSize = 24
             newButton.TextWrapped = true
+            newButton.ZIndex = 2
 
             local newButtonUICorner = Instance.new("UICorner", newButton)
             newButtonUICorner.CornerRadius = UDim.new(0,15)
@@ -198,6 +199,7 @@ function lib:NewWindow(guiName)
             newButtonText.TextSize = 14
             newButtonText.TextWrapped = true
             newButtonText.TextXAlignment = Enum.TextXAlignment.Left
+            newButtonText.ZIndex = 2
 
             newButton.MouseButton1Click:Connect(Callback)
         end
@@ -208,7 +210,6 @@ function lib:NewWindow(guiName)
             newDivider.BackgroundTransparency = 1
             newDivider.BorderColor3 = Color3.new(0, 0, 0)
             newDivider.BorderSizePixel = 0
-            newDivider.Position = UDim2.new(0, 0, 0.136910275, 0)
             newDivider.Size = UDim2.new(1, 0, 0, 27)
             newDivider.ZIndex = 2
 
@@ -247,7 +248,6 @@ function lib:NewWindow(guiName)
             newToggleFrame.BackgroundTransparency = 1
             newToggleFrame.BorderColor3 = Color3.new(0, 0, 0)
             newToggleFrame.BorderSizePixel = 0
-            newToggleFrame.Position = UDim2.new(0, 0, 0.136910275, 0)
             newToggleFrame.Size = UDim2.new(1, 0, 0, 27)
             newToggleFrame.ZIndex = 2
             local newToggleText = Instance.new("TextLabel", newToggleFrame)
