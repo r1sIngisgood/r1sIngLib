@@ -101,7 +101,7 @@ function lib:NewWindow(guiName)
     local sizeTable = {[true] = 275, [false] = 0}
     CloseButton.MouseButton1Click:Connect(function()
         guiState = not guiState
-        TweenService:Create(MainBackground, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Size = sizeTable[guiState]}):Play()
+        TweenService:Create(MainBackground, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Size = UDim2.new(1,0,0,sizeTable[guiState])}):Play()
     end)
 
     --Dragging
@@ -383,7 +383,7 @@ function lib:NewWindow(guiName)
             local stateTable = {[true] = UDim2.new(1,0,.5,0), [false] = UDim2.new(.5,0,.5,0)}
             newToggleButton.MouseButton1Click:Connect(function()
                 newToggleState.Value = not newToggleState.Value
-                TweenService:Create(newToggleCircle, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Position = stateTable[newToggleState.Value]}):Play()
+                TweenService:Create(newToggleCircle, TweenInfo.new(0.05, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Position = stateTable[newToggleState.Value]}):Play()
                 Callback(newToggleState.Value)
             end)
             return newToggleState
