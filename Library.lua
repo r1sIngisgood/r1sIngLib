@@ -2,7 +2,10 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/r1sIngisgood/r1sIngLib/main/Library.lua"))()
 ]]--
 
+local localPlayer = game:GetService("Players").LocalPlayer
+local mouse = localPlayer:GetMouse()
 local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
 
 local lib = {}
 
@@ -104,6 +107,43 @@ function lib:NewWindow(guiName)
         CurrentTab = Tab
         TabsTable[Tab].Parent = MainBackground
     end
+
+    --Dragging
+    local Holding = false
+    local Hovered = false
+    local MoveCon = nil
+
+    local InitX, InitY, UIInitPos
+
+    local function Drag()
+        if Holding == false then MoveCon:Disconnect(); return end
+        local distMovedX = InitX - mouse.X
+        local distMovedY = InitY - mouse.Y
+
+        MainBackground.Position = UIInitPos - UDim2.new(0, distMovedX, 0, distMovedY)
+    end
+
+    MainBackground.MouseEnter:Connect(function()
+        Hovered = true
+    end)
+    MainBackground.MouseLeave:Connect(function()
+        Hovered = false
+    end)
+    UserInputService.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            Holding = Hovered
+            if Holding then
+                InitX, InitY = mouse.X, mouse.Y
+                UIInitPos = MainBackground.Position
+                MoveCon = mouse.Move:Connect(Drag)
+            end
+        end
+    end)
+    UserInputService.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then Holding = false end
+    end)
+
+    MoveCon = mouse.Move:Connect(Drag)
 
     local Windowlib = {}
 
@@ -312,7 +352,7 @@ function lib:NewWindow(guiName)
             local stateTable = {[true] = UDim2.new(1,0,.5,0), [false] = UDim2.new(.5,0,.5,0)}
             newToggleButton.MouseButton1Click:Connect(function()
                 newToggleState.Value = not newToggleState.Value
-                TweenService:Create(newToggleCircle, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {Position = stateTable[newToggleState.Value]}):Play()
+                TweenService:Create(newToggleCircle, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Position = stateTable[newToggleState.Value]}):Play()
                 Callback(newToggleState.Value)
             end)
             return newToggleState
