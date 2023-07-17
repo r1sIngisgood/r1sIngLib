@@ -31,7 +31,6 @@ function lib:NewWindow(guiName)
     MainBackground.ClipsDescendants = true
     MainBackground.Position = UDim2.new(0, 0, 1, 0)
     MainBackground.Size = UDim2.new(1, 0, 0, 275)
-    MainBackground.ZIndex = 2
 
     TopBar.Name = "TopBar"
     TopBar.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
@@ -47,7 +46,7 @@ function lib:NewWindow(guiName)
     CloseButton.BackgroundTransparency = 1
     CloseButton.BorderColor3 = Color3.new(0, 0, 0)
     CloseButton.BorderSizePixel = 0
-    CloseButton.Position = UDim2.new(1, -5, 0.546999991, 0)
+    CloseButton.Position = UDim2.new(1, -5, 0.5, 0)
     CloseButton.Size = UDim2.new(0, 35, 0, 35)
     CloseButton.Image = "http://www.roblox.com/asset/?id=14097204007"
 
@@ -61,7 +60,7 @@ function lib:NewWindow(guiName)
     GuiName.Size = UDim2.new(0, 135, 1, 0)
     GuiName.ZIndex = 2
     GuiName.Font = Enum.Font.SourceSansLight
-    GuiName.Text = "r1sIngHub"
+    GuiName.Text = guiName
     GuiName.TextColor3 = Color3.new(1, 1, 1)
     GuiName.TextScaled = true
     GuiName.TextSize = 14
@@ -74,8 +73,7 @@ function lib:NewWindow(guiName)
     Tabs.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
     Tabs.BorderSizePixel = 2
     Tabs.ClipsDescendants = true
-    Tabs.Position = UDim2.new(0, 0, 0.125, 0)
-    Tabs.Size = UDim2.new(0.25, 0, 0, 275)
+    Tabs.Size = UDim2.new(0.25, 1, 0, 275)
 
     List.Name = "List"
     List.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -99,6 +97,12 @@ function lib:NewWindow(guiName)
     end
 
     --Ui Closing
+    local guiState = true
+    local sizeTable = {[true] = 275, [false] = 0}
+    CloseButton.MouseButton1Click:Connect(function()
+        guiState = not guiState
+        TweenService:Create(MainBackground, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Size = sizeTable[guiState]}):Play()
+    end)
 
     --Dragging
     local Holding = false
