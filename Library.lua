@@ -188,10 +188,10 @@ function lib:NewWindow(guiName)
             local newButtonText = Instance.new("TextLabel", newButtonFrame)
             newButtonText.AnchorPoint = Vector2.new(1, 0)
             newButtonText.BackgroundColor3 = Color3.new(1, 1, 1)
-            newButtonText.BackgroundTransparency = 0.75
+            newButtonText.BackgroundTransparency = 1
             newButtonText.BorderSizePixel = 0
             newButtonText.Position = UDim2.new(1, 0, 0, 0)
-            newButtonText.Size = UDim2.new(0.5, -5, 1, 0)
+            newButtonText.Size = UDim2.new(0.935, -5, 1, 0)
             newButtonText.Font = Enum.Font.SourceSansLight
             newButtonText.Text = Text
             newButtonText.TextColor3 = Color3.new(1, 1, 1)
