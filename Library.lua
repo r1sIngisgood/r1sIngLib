@@ -98,11 +98,11 @@ function lib:NewWindow(guiName)
 
     --Ui Closing
     local guiState = true
-    local closeButtonTable = {[true] = {275, 0}, [false] = {0, 90}}
+    local closeButtonTable = {[true] = {275, 0}, [false] = {0, 180}}
     CloseButton.MouseButton1Click:Connect(function()
         guiState = not guiState
-        TweenService:Create(MainBackground, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Size = UDim2.new(1,0,0,closeButtonTable[guiState][1])}):Play()
-        TweenService:Create(CloseButton, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Rotation = closeButtonTable[guiState][2]}):Play()
+        TweenService:Create(MainBackground, TweenInfo.new(0.15, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Size = UDim2.new(1,0,0,closeButtonTable[guiState][1])}):Play()
+        TweenService:Create(CloseButton, TweenInfo.new(0.15, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Rotation = closeButtonTable[guiState][2]}):Play()
     end)
 
     --Dragging
