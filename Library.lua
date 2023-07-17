@@ -386,7 +386,8 @@ function lib:NewWindow(guiName)
             newToggleButton.MouseButton1Click:Connect(function()
                 newToggleState.Value = not newToggleState.Value
                 TweenService:Create(newToggleCircle, TweenInfo.new(0.05, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Position = stateTable[newToggleState.Value]}):Play()
-                Callback(newToggleState.Value)
+                local newValue = newToggleState.Value
+                Callback(newValue)
             end)
             return newToggleState
         end
