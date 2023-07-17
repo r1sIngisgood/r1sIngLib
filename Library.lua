@@ -25,13 +25,13 @@ function lib:NewWindow(guiName)
     TabsTemp.Name = "TabsTemp"
 
     MainBackground.Name = "MainBackground"
-    MainBackground.BackgroundColor3 = Color3.new(0, 0, 0)
-    MainBackground.BackgroundTransparency = 0.375
-    MainBackground.BorderColor3 = Color3.new(0, 0, 0)
-    MainBackground.BorderSizePixel = 0
-    MainBackground.Position = UDim2.new(0, 0, 1, 0)
-    MainBackground.Size = UDim2.new(1, 0, 0, 350)
+    MainBackground.Parent = TopBar
+    MainBackground.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+    MainBackground.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
     MainBackground.ClipsDescendants = true
+    MainBackground.Position = UDim2.new(0, 0, 1, 0)
+    MainBackground.Size = UDim2.new(1, 0, 0, 275)
+    MainBackground.ZIndex = 2
 
     TopBar.Name = "TopBar"
     TopBar.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
@@ -57,18 +57,17 @@ function lib:NewWindow(guiName)
     GuiName.BackgroundTransparency = 1
     GuiName.BorderColor3 = Color3.new(0, 0, 0)
     GuiName.BorderSizePixel = 0
-    GuiName.Position = UDim2.new(0, 5, 0.546999931, 0)
-    GuiName.Size = UDim2.new(-0.00819513481, 137, 1, 0)
+    GuiName.Position = UDim2.new(0, 5, 0.5, 0)
+    GuiName.Size = UDim2.new(0, 135, 1, 0)
     GuiName.ZIndex = 2
     GuiName.Font = Enum.Font.SourceSansLight
-    GuiName.Text = guiName
+    GuiName.Text = "r1sIngHub"
     GuiName.TextColor3 = Color3.new(1, 1, 1)
     GuiName.TextScaled = true
     GuiName.TextSize = 14
     GuiName.TextStrokeColor3 = Color3.new(1, 1, 1)
-    GuiName.TextStrokeTransparency = 0.949999988079071
+    GuiName.TextStrokeTransparency = 0.95
     GuiName.TextWrapped = true
-    GuiName.TextYAlignment = Enum.TextYAlignment.Bottom
 
     Tabs.Name = "Tabs"
     Tabs.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
@@ -113,7 +112,7 @@ function lib:NewWindow(guiName)
         local distMovedX = InitX - mouse.X
         local distMovedY = InitY - mouse.Y
 
-        MainBackground.Position = UIInitPos - UDim2.new(0, distMovedX, 0, distMovedY)
+        TopBar.Position = UIInitPos - UDim2.new(0, distMovedX, 0, distMovedY)
     end
 
     TopBar.MouseEnter:Connect(function()
@@ -127,7 +126,7 @@ function lib:NewWindow(guiName)
             Holding = Hovered
             if Holding then
                 InitX, InitY = mouse.X, mouse.Y
-                UIInitPos = MainBackground.Position
+                UIInitPos = TopBar.Position
                 MoveCon = mouse.Move:Connect(Drag)
             end
         end
