@@ -169,7 +169,7 @@ function lib:NewWindow(guiName)
         itTabFrame.BorderSizePixel = 2
         itTabFrame.ClipsDescendants = true
         itTabFrame.LayoutOrder = 1
-        itTabFrame.Position = UDim2.new(1, 0, 0.125, 0)
+        itTabFrame.Position = UDim2.new(1, 0, 0, 0)
         itTabFrame.Size = UDim2.new(0.75, 0, 0, 275)
         itTabFrame.ZIndex = 2
         local itTabNameFrame = Instance.new("Frame", itTabFrame)
