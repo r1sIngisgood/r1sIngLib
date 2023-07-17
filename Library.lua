@@ -98,10 +98,11 @@ function lib:NewWindow(guiName)
 
     --Ui Closing
     local guiState = true
-    local sizeTable = {[true] = 275, [false] = 0}
+    local closeButtonTable = {[true] = {275, 0}, [false] = {0, 90}}
     CloseButton.MouseButton1Click:Connect(function()
         guiState = not guiState
-        TweenService:Create(MainBackground, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Size = UDim2.new(1,0,0,sizeTable[guiState])}):Play()
+        TweenService:Create(MainBackground, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Size = UDim2.new(1,0,0,closeButtonTable[guiState][1])}):Play()
+        TweenService:Create(CloseButton, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Rotation = closeButtonTable[guiState][2]}):Play()
     end)
 
     --Dragging
@@ -204,6 +205,7 @@ function lib:NewWindow(guiName)
         itTabLine.BorderSizePixel = 0
         itTabLine.Position = UDim2.new(0, 0, 1, 0)
         itTabLine.Size = UDim2.new(1, -5, 0, 1)
+        itTabLine.ZIndex = 2
         local itScrollingFrame = Instance.new("ScrollingFrame", itTabFrame)
         itScrollingFrame.Active = true
         itScrollingFrame.AnchorPoint = Vector2.new(0, 1)
