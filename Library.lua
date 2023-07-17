@@ -7,7 +7,9 @@ local TweenService = game:GetService("TweenService")
 local lib = {}
 
 function lib:NewWindow(guiName)
-    local Window = Instance.new("ScreenGui")
+    if not (type(guiName) == "string") then guiName = "r1sIngLib" end
+
+    local Window = Instance.new("ScreenGui", game.CoreGui)
     local MainBackground = Instance.new("Frame", Window)
     local TopBar = Instance.new("Frame", MainBackground )
     local GuiName = Instance.new("TextLabel", TopBar)
@@ -91,8 +93,6 @@ function lib:NewWindow(guiName)
 
     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-    Window.Parent = game.CoreGui
-
     local TabsTable = {}
     local CurrentTab = nil
     local function switchTab(Tab)
@@ -153,6 +153,7 @@ function lib:NewWindow(guiName)
         local Tablib = {}
         function Tablib:NewButton(Text, Callback)
             if not (type(Callback) == "function") then Callback = function()end end
+            if not (type(Text) == "string") then Text = "" end
             local newButtonFrame = Instance.new("Frame", itScrollingFrame)
             newButtonFrame.Parent = itScrollingFrame
             newButtonFrame.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -178,15 +179,15 @@ function lib:NewWindow(guiName)
 
             local newButtonUICorner = Instance.new("UICorner", newButton)
             newButtonUICorner.CornerRadius = UDim.new(0,15)
+            local newButtonAspectRatio = Instance.new("UIAspectRatioConstraint", newButton)
 
             local newButtonText = Instance.new("TextLabel", newButtonFrame)
             newButtonText.AnchorPoint = Vector2.new(1, 0)
             newButtonText.BackgroundColor3 = Color3.new(1, 1, 1)
             newButtonText.BackgroundTransparency = 0.75
-            newButtonText.BorderColor3 = Color3.new(0, 0, 0)
             newButtonText.BorderSizePixel = 0
             newButtonText.Position = UDim2.new(1, 0, 0, 0)
-            newButtonText.Size = UDim2.new(0.9, -5, 1, 0)
+            newButtonText.Size = UDim2.new(0.5, -5, 1, 0)
             newButtonText.Font = Enum.Font.SourceSansLight
             newButtonText.Text = Text
             newButtonText.TextColor3 = Color3.new(1, 1, 1)
