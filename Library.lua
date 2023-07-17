@@ -109,12 +109,14 @@ function lib:NewWindow(guiName)
 
     function Windowlib:NewTab(TabName)
         if not (type(TabName) == "string") then TabName = "" end
+        local Parent = nil
+        if TabsTable == {} then Parent = MainBackground else Parent = TabsTemp end
         local tabButton = Instance.new("TextButton", List)
         tabButton.Name = TabName
         tabButton.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
         tabButton.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
         tabButton.BorderSizePixel = 0
-        tabButton.Size = UDim2.new(1.00364947, 0, 0.0196278561, 30)
+        tabButton.Size = UDim2.new(1, 0, 0, 30)
         tabButton.AutoButtonColor = false
         tabButton.Font = Enum.Font.SourceSansLight
         tabButton.Text = TabName
@@ -122,9 +124,9 @@ function lib:NewWindow(guiName)
         tabButton.TextScaled = true
         tabButton.TextSize = 24
         tabButton.TextStrokeColor3 = Color3.new(1, 1, 1)
-        tabButton.TextStrokeTransparency = 0.949999988079071
+        tabButton.TextStrokeTransparency = 0.95
         tabButton.TextWrapped = true
-        local itTabFrame = Instance.new("Frame", TabsTemp)
+        local itTabFrame = Instance.new("Frame", Parent)
         itTabFrame.AnchorPoint = Vector2.new(1, 0)
         itTabFrame.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
         itTabFrame.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
@@ -139,13 +141,14 @@ function lib:NewWindow(guiName)
         itScrollingFrame.BackgroundTransparency = 1
         itScrollingFrame.BorderColor3 = Color3.new(0, 0, 0)
         itScrollingFrame.BorderSizePixel = 0
-        itScrollingFrame.Position = UDim2.new(0.00484848488, 0, 0.00729261618, 0)
+        itScrollingFrame.Position = UDim2.new(0, 0, 0, 0)
         itScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
         local itUiListLayout = Instance.new("UIListLayout", itScrollingFrame)
         itUiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
         itUiListLayout.Padding = UDim.new(0, 5)
+        
+        if itTabFrame.Parent == MainBackground then CurrentTab = itTabFrame.Name end
         TabsTable[tabButton.Name] = itTabFrame
-        if table.maxn(TabsTable) == 1 then switchTab(TabName) end
         tabButton.MouseButton1Click:Connect(function()
             switchTab(TabName)
         end)
