@@ -1,8 +1,12 @@
+--[[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/r1sIngisgood/r1sIngLib/main/Library.lua"))()
+]]--
+
 local TweenService = game:GetService("TweenService")
 
 local lib = {}
 
-function lib:CreateWindow(guiName)
+function lib:NewWindow(guiName)
     local Window = Instance.new("ScreenGui")
     local MainBackground = Instance.new("Frame", Window)
     local TopBar = Instance.new("Frame", MainBackground )
@@ -103,7 +107,7 @@ function lib:CreateWindow(guiName)
 
     local Windowlib = {}
 
-    function Windowlib:CreateTab(TabName)
+    function Windowlib:NewTab(TabName)
         if not (type(TabName) == "string") then TabName = "" end
         local tabButton = Instance.new("TextButton", List)
         tabButton.Name = TabName
@@ -147,7 +151,7 @@ function lib:CreateWindow(guiName)
         end)
 
         local Tablib = {}
-        function Tablib:CreateButton(Text, Callback)
+        function Tablib:NewButton(Text, Callback)
             if not (type(Callback) == "function") then Callback = function()end end
             local newButtonFrame = Instance.new("Frame", itScrollingFrame)
             newButtonFrame.Parent = itScrollingFrame
@@ -172,6 +176,9 @@ function lib:CreateWindow(guiName)
             newButton.TextSize = 24
             newButton.TextWrapped = true
 
+            local newButtonUICorner = Instance.new("UICorner", newButton)
+            newButtonUICorner.CornerRadius = UDim.new(0,15)
+
             local newButtonText = Instance.new("TextLabel", newButtonFrame)
             newButtonText.AnchorPoint = Vector2.new(1, 0)
             newButtonText.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -179,7 +186,7 @@ function lib:CreateWindow(guiName)
             newButtonText.BorderColor3 = Color3.new(0, 0, 0)
             newButtonText.BorderSizePixel = 0
             newButtonText.Position = UDim2.new(1, 0, 0, 0)
-            newButtonText.Size = UDim2.new(0.935, -5, 1, 0)
+            newButtonText.Size = UDim2.new(0.9, -5, 1, 0)
             newButtonText.Font = Enum.Font.SourceSansLight
             newButtonText.Text = Text
             newButtonText.TextColor3 = Color3.new(1, 1, 1)
@@ -190,7 +197,7 @@ function lib:CreateWindow(guiName)
 
             newButton.MouseButton1Click:Connect(Callback)
         end
-        function Tablib:CreateDivider(Text)
+        function Tablib:NewDivider(Text)
             if not (type(Text) == "string") then Text = "" end
             local newDivider = Instance.new("Frame", itScrollingFrame)
             newDivider.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -217,7 +224,7 @@ function lib:CreateWindow(guiName)
             newDividerText.TextWrapped = true
             newDividerText.TextXAlignment = Enum.TextXAlignment.Left
 
-            local newDividerLine = Instance.new("Frame")
+            local newDividerLine = Instance.new("Frame", newDivider)
             newDividerLine.BackgroundColor3 = Color3.new(0.639216, 0.639216, 0.639216)
             newDividerLine.BorderColor3 = Color3.new(0, 0, 0)
             newDividerLine.BorderSizePixel = 0
@@ -226,7 +233,7 @@ function lib:CreateWindow(guiName)
             newDivider.Name = Text
             newDividerText.Text = Text
         end
-        function Tablib:CreateToggle(Text, Callback, defaultState)
+        function Tablib:NewToggle(Text, Callback, defaultState)
             if not (type(Callback) == "function") then Callback = function()end end
             if not (type(Text) == "string") then Text = "" end
             if not (type(defaultState) == "boolean") then defaultState = false end
