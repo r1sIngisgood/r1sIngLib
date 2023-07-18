@@ -116,7 +116,6 @@ function lib:NewWindow(guiName)
     HomeTabDivider.BackgroundTransparency = 1
     HomeTabDivider.BorderColor3 = Color3.new(0, 0, 0)
     HomeTabDivider.BorderSizePixel = 0
-    HomeTabDivider.Position = UDim2.new(0, 0, 0.136910275, 0)
     HomeTabDivider.Size = UDim2.new(1, 0, 0, 20)
     HomeTabDivider.ZIndex = 2
     local HomeTabDividerText = Instance.new("TextLabel", HomeTabDivider)
