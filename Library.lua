@@ -107,6 +107,7 @@ function lib:NewWindow(guiName)
     HomeTabScrollingFrame.Size = UDim2.new(1, 0, 1, -30)
     HomeTabScrollingFrame.CanvasPosition = Vector2.new(0, 150)
     HomeTabScrollingFrame.ScrollBarThickness = 5
+    HomeTabScrollingFrame.ZIndex = 3
     local HomeTabUIListLayout = Instance.new("UIListLayout", HomeTabScrollingFrame)
     HomeTabUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
     HomeTabUIListLayout.Padding = UDim.new(0, 4)
@@ -117,7 +118,7 @@ function lib:NewWindow(guiName)
     HomeTabDivider.BorderSizePixel = 0
     HomeTabDivider.Position = UDim2.new(0, 0, 0.136910275, 0)
     HomeTabDivider.Size = UDim2.new(1, 0, 0, 20)
-    HomeTabDivider.ZIndex = 2
+    HomeTabDivider.ZIndex = 4
     local HomeTabDividerText = Instance.new("TextLabel", HomeTabDivider)
     HomeTabDividerText.AnchorPoint = Vector2.new(0, 1)
     HomeTabDividerText.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -133,13 +134,14 @@ function lib:NewWindow(guiName)
     HomeTabDividerText.TextWrapped = true
     HomeTabDividerText.TextXAlignment = Enum.TextXAlignment.Left
     HomeTabDividerText.TextYAlignment = Enum.TextYAlignment.Bottom
+    HomeTabDividerText.ZIndex = 5
     local HomeFrame = Instance.new("Frame", HomeTabScrollingFrame)
     HomeFrame.BackgroundColor3 = Color3.new(1, 1, 1)
     HomeFrame.BackgroundTransparency = 1
     HomeFrame.BorderColor3 = Color3.new(0, 0, 0)
     HomeFrame.BorderSizePixel = 0
     HomeFrame.Size = UDim2.new(1, -5, 0, 100)
-    HomeFrame.ZIndex = 3
+    HomeFrame.ZIndex = 4
     local HomeBackground = Instance.new("Frame", HomeFrame)
     HomeBackground.AnchorPoint = Vector2.new(0.5, 0.5)
     HomeBackground.BackgroundColor3 = Color3.new(0.290196, 0.290196, 0.290196)
@@ -147,6 +149,7 @@ function lib:NewWindow(guiName)
     HomeBackground.BorderSizePixel = 0
     HomeBackground.Position = UDim2.new(0.5, 0, 0.5, 0)
     HomeBackground.Size = UDim2.new(1, -10, 1, 0)
+    HomeBackground.ZIndex = 5
     local HomeUserImage = Instance.new("ImageLabel", HomeBackground)
     HomeUserImage.AnchorPoint = Vector2.new(0, 0.5)
     HomeUserImage.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
@@ -155,6 +158,7 @@ function lib:NewWindow(guiName)
     HomeUserImage.Position = UDim2.new(0, 5, 0.5, 0)
     HomeUserImage.Size = UDim2.new(1, -10, 1, -10)
     HomeUserImage.Image = game:GetService("Players"):GetUserThumbnailAsync(localPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+    HomeUserImage.ZIndex = 5
     local HomeUserImageAspectRatio = Instance.new("UIAspectRatioConstraint", HomeUserImage)
     local HomeUsernameText = Instance.new("TextLabel", HomeBackground)
     HomeUsernameText.AnchorPoint = Vector2.new(0, 1)
@@ -172,6 +176,7 @@ function lib:NewWindow(guiName)
     HomeUsernameText.TextWrapped = true
     HomeUsernameText.TextXAlignment = Enum.TextXAlignment.Left
     HomeUsernameText.TextYAlignment = Enum.TextYAlignment.Bottom
+    HomeUsernameText.ZIndex = 5
     local HomeDescription = Instance.new("TextLabel", HomeBackground)
     HomeDescription.AnchorPoint = Vector2.new(0, 1)
     HomeDescription.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -187,6 +192,7 @@ function lib:NewWindow(guiName)
     HomeDescription.TextWrapped = true
     HomeDescription.TextXAlignment = Enum.TextXAlignment.Left
     HomeDescription.TextYAlignment = Enum.TextYAlignment.Top
+    HomeDescription.ZIndex = 5
     local HomeDiscordButton = Instance.new("TextButton", HomeBackground)
     HomeDiscordButton.AnchorPoint = Vector2.new(1, 1)
     HomeDiscordButton.BackgroundColor3 = Color3.new(0.337255, 0.384314, 0.964706)
@@ -200,6 +206,7 @@ function lib:NewWindow(guiName)
     HomeDiscordButton.TextColor3 = Color3.new(1, 1, 1)
     HomeDiscordButton.TextSize = 14
     HomeDiscordButton.TextWrapped = true
+    HomeDiscordButton.ZIndex = 5
     local HomeTabNameFrame = Instance.new("Frame", HomeTabFrame)
     HomeTabNameFrame.BackgroundColor3 = Color3.new(1, 1, 1)
     HomeTabNameFrame.BackgroundTransparency = 1
@@ -381,6 +388,7 @@ function lib:NewWindow(guiName)
         itScrollingFrame.Position = UDim2.new(0, 0, 1, 0)
         itScrollingFrame.Size = UDim2.new(1, 0, 1, -30)
         itScrollingFrame.ScrollBarThickness = 5
+        itScrollingFrame.ZIndex = 2
         local itUiListLayout = Instance.new("UIListLayout", itScrollingFrame)
         itUiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
         itUiListLayout.Padding = UDim.new(0, 5)
