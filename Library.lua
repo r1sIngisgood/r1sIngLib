@@ -186,7 +186,7 @@ function lib:NewWindow(guiName)
     HomeDescription.TextWrapped = true
     HomeDescription.TextXAlignment = Enum.TextXAlignment.Left
     HomeDescription.TextYAlignment = Enum.TextYAlignment.Top
-    local HomeDiscordButton = Instance.new("ImageButton", HomeBackground)
+    local HomeDiscordButton = Instance.new("TextButton", HomeBackground)
     HomeDiscordButton.AnchorPoint = Vector2.new(1, 1)
     HomeDiscordButton.BackgroundColor3 = Color3.new(0.337255, 0.384314, 0.964706)
     HomeDiscordButton.BorderColor3 = Color3.new(0, 0, 0)
