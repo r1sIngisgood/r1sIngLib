@@ -107,6 +107,7 @@ function lib:NewWindow(guiName)
     HomeTabScrollingFrame.Size = UDim2.new(1, 0, 1, -30)
     HomeTabScrollingFrame.CanvasPosition = Vector2.new(0, 150)
     HomeTabScrollingFrame.ScrollBarThickness = 5
+    HomeTabScrollingFrame.ZIndex = 2
     local HomeTabUIListLayout = Instance.new("UIListLayout", HomeTabScrollingFrame)
     HomeTabUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
     HomeTabUIListLayout.Padding = UDim.new(0, 4)
@@ -117,7 +118,7 @@ function lib:NewWindow(guiName)
     HomeTabDivider.BorderSizePixel = 0
     HomeTabDivider.Position = UDim2.new(0, 0, 0.136910275, 0)
     HomeTabDivider.Size = UDim2.new(1, 0, 0, 20)
-    HomeTabDivider.ZIndex = 2
+    HomeTabDivider.ZIndex = 3
     local HomeTabDividerText = Instance.new("TextLabel", HomeTabDivider)
     HomeTabDividerText.AnchorPoint = Vector2.new(0, 1)
     HomeTabDividerText.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -139,6 +140,7 @@ function lib:NewWindow(guiName)
     HomeFrame.BorderColor3 = Color3.new(0, 0, 0)
     HomeFrame.BorderSizePixel = 0
     HomeFrame.Size = UDim2.new(1, -5, 0, 100)
+    HomeFrame.ZIndex = 3
     local HomeBackground = Instance.new("Frame", HomeFrame)
     HomeBackground.AnchorPoint = Vector2.new(0.5, 0.5)
     HomeBackground.BackgroundColor3 = Color3.new(0.290196, 0.290196, 0.290196)
