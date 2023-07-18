@@ -85,8 +85,174 @@ function lib:NewWindow(guiName)
 
     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-    local TabsTable = {}
-    local CurrentTab = nil
+    local HomeTabFrame = Instance.new("Frame", MainBackground)
+    HomeTabFrame.Name = "HomeTab"
+    HomeTabFrame.AnchorPoint = Vector2.new(1, 0)
+    HomeTabFrame.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+    HomeTabFrame.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+    HomeTabFrame.BorderSizePixel = 2
+    HomeTabFrame.ClipsDescendants = true
+    HomeTabFrame.LayoutOrder = 1
+    HomeTabFrame.Position = UDim2.new(1, 0, 0, 0)
+    HomeTabFrame.Size = UDim2.new(0.75, 0, 0, 275)
+    HomeTabFrame.ZIndex = 2
+    local HomeTabScrollingFrame = Instance.new("ScrollingFrame", HomeTabFrame)
+    HomeTabScrollingFrame.Active = true
+    HomeTabScrollingFrame.AnchorPoint = Vector2.new(0, 1)
+    HomeTabScrollingFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+    HomeTabScrollingFrame.BackgroundTransparency = 1
+    HomeTabScrollingFrame.BorderColor3 = Color3.new(0, 0, 0)
+    HomeTabScrollingFrame.BorderSizePixel = 0
+    HomeTabScrollingFrame.Position = UDim2.new(0, 0, 1, 0)
+    HomeTabScrollingFrame.Size = UDim2.new(1, 0, 1, -30)
+    HomeTabScrollingFrame.CanvasPosition = Vector2.new(0, 150)
+    HomeTabScrollingFrame.ScrollBarThickness = 5
+    local HomeTabUIListLayout = Instance.new("UIListLayout", HomeTabScrollingFrame)
+    HomeTabUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    HomeTabUIListLayout.Padding = UDim.new(0, 4)
+    local HomeTabDivider = Instance.new("Frame", HomeTabScrollingFrame)
+    HomeTabDivider.BackgroundColor3 = Color3.new(1, 1, 1)
+    HomeTabDivider.BackgroundTransparency = 1
+    HomeTabDivider.BorderColor3 = Color3.new(0, 0, 0)
+    HomeTabDivider.BorderSizePixel = 0
+    HomeTabDivider.Position = UDim2.new(0, 0, 0.136910275, 0)
+    HomeTabDivider.Size = UDim2.new(1, 0, 0, 20)
+    HomeTabDivider.ZIndex = 2
+    local HomeTabDividerText = Instance.new("TextLabel", HomeTabDivider)
+    HomeTabDividerText.AnchorPoint = Vector2.new(0, 1)
+    HomeTabDividerText.BackgroundColor3 = Color3.new(1, 1, 1)
+    HomeTabDividerText.BackgroundTransparency = 1
+    HomeTabDividerText.BorderColor3 = Color3.new(1, 1, 1)
+    HomeTabDividerText.BorderSizePixel = 0
+    HomeTabDividerText.Position = UDim2.new(0, 10, 1, 4)
+    HomeTabDividerText.Size = UDim2.new(1, -10, 0.75, 0)
+    HomeTabDividerText.Font = Enum.Font.SourceSansLight
+    HomeTabDividerText.Text = "Home"
+    HomeTabDividerText.TextColor3 = Color3.new(1, 1, 1)
+    HomeTabDividerText.TextSize = 19
+    HomeTabDividerText.TextWrapped = true
+    HomeTabDividerText.TextXAlignment = Enum.TextXAlignment.Left
+    HomeTabDividerText.TextYAlignment = Enum.TextYAlignment.Bottom
+    local HomeFrame = Instance.new("Frame", HomeTabScrollingFrame)
+    HomeFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+    HomeFrame.BackgroundTransparency = 1
+    HomeFrame.BorderColor3 = Color3.new(0, 0, 0)
+    HomeFrame.BorderSizePixel = 0
+    HomeFrame.Size = UDim2.new(1, -5, 0, 100)
+    local HomeBackground = Instance.new("Frame", HomeFrame)
+    HomeBackground.AnchorPoint = Vector2.new(0.5, 0.5)
+    HomeBackground.BackgroundColor3 = Color3.new(0.290196, 0.290196, 0.290196)
+    HomeBackground.BorderColor3 = Color3.new(0, 0, 0)
+    HomeBackground.BorderSizePixel = 0
+    HomeBackground.Position = UDim2.new(0.5, 0, 0.5, 0)
+    HomeBackground.Size = UDim2.new(1, -10, 1, 0)
+    local HomeUserImage = Instance.new("ImageLabel", HomeBackground)
+    HomeUserImage.AnchorPoint = Vector2.new(0, 0.5)
+    HomeUserImage.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+    HomeUserImage.BorderColor3 = Color3.new(0, 0, 0)
+    HomeUserImage.BorderSizePixel = 0
+    HomeUserImage.Position = UDim2.new(0, 5, 0.5, 0)
+    HomeUserImage.Size = UDim2.new(1, -10, 1, -10)
+    HomeUserImage.Image = game:GetService("Players"):GetUserThumbnailAsync(localPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+    local HomeUserImageAspectRatio = Instance.new("UIAspectRatioConstraint", HomeUserImage)
+    local HomeUsernameText = Instance.new("TextLabel", HomeBackground)
+    HomeUsernameText.AnchorPoint = Vector2.new(0, 1)
+    HomeUsernameText.BackgroundColor3 = Color3.new(1, 1, 1)
+    HomeUsernameText.BackgroundTransparency = 1
+    HomeUsernameText.BorderColor3 = Color3.new(0, 0, 0)
+    HomeUsernameText.BorderSizePixel = 0
+    HomeUsernameText.Position = UDim2.new(0.25, 0, 0.300000012, 0)
+    HomeUsernameText.Size = UDim2.new(0.649999976, 0, 0, 25)
+    HomeUsernameText.Font = Enum.Font.SourceSansSemibold
+    HomeUsernameText.Text = "Hi, "..localPlayer.DisplayName
+    HomeUsernameText.TextColor3 = Color3.new(1, 1, 1)
+    HomeUsernameText.TextScaled = true
+    HomeUsernameText.TextSize = 14
+    HomeUsernameText.TextWrapped = true
+    HomeUsernameText.TextXAlignment = Enum.TextXAlignment.Left
+    HomeUsernameText.TextYAlignment = Enum.TextYAlignment.Bottom
+    local HomeDescription = Instance.new("TextLabel", HomeBackground)
+    HomeDescription.AnchorPoint = Vector2.new(0, 1)
+    HomeDescription.BackgroundColor3 = Color3.new(1, 1, 1)
+    HomeDescription.BackgroundTransparency = 1
+    HomeDescription.BorderColor3 = Color3.new(0, 0, 0)
+    HomeDescription.BorderSizePixel = 0
+    HomeDescription.Position = UDim2.new(0.300000012, 0, 1, 0)
+    HomeDescription.Size = UDim2.new(0.600000024, -10, 1, -30)
+    HomeDescription.Font = Enum.Font.SourceSansLight
+    HomeDescription.Text = "Welcome to r1sIngHub"
+    HomeDescription.TextColor3 = Color3.new(1, 1, 1)
+    HomeDescription.TextSize = 20
+    HomeDescription.TextWrapped = true
+    HomeDescription.TextXAlignment = Enum.TextXAlignment.Left
+    HomeDescription.TextYAlignment = Enum.TextYAlignment.Top
+    local HomeDiscordButton = Instance.new("ImageButton", HomeBackground)
+    HomeDiscordButton.AnchorPoint = Vector2.new(1, 1)
+    HomeDiscordButton.BackgroundColor3 = Color3.new(0.337255, 0.384314, 0.964706)
+    HomeDiscordButton.BorderColor3 = Color3.new(0, 0, 0)
+    HomeDiscordButton.BorderSizePixel = 0
+    HomeDiscordButton.Position = UDim2.new(1, -10, 1, -10)
+    HomeDiscordButton.Size = UDim2.new(0, 50, 0, 25)
+    HomeDiscordButton.AutoButtonColor = false
+    HomeDiscordButton.Font = Enum.Font.SourceSansSemibold
+    HomeDiscordButton.Text = "Discord"
+    HomeDiscordButton.TextColor3 = Color3.new(1, 1, 1)
+    HomeDiscordButton.TextSize = 14
+    HomeDiscordButton.TextWrapped = true
+    local HomeTabNameFrame = Instance.new("Frame", HomeTabFrame)
+    HomeTabNameFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+    HomeTabNameFrame.BackgroundTransparency = 1
+    HomeTabNameFrame.BorderColor3 = Color3.new(0, 0, 0)
+    HomeTabNameFrame.BorderSizePixel = 0
+    HomeTabNameFrame.Size = UDim2.new(1, 0, 0, 30)
+    local HomeTabName = Instance.new("TextLabel", HomeTabNameFrame)
+    HomeTabName.BackgroundColor3 = Color3.new(0, 0, 0)
+    HomeTabName.BackgroundTransparency = 1
+    HomeTabName.BorderColor3 = Color3.new(0, 0, 0)
+    HomeTabName.BorderSizePixel = 0
+    HomeTabName.Size = UDim2.new(1, 0, 1, 0)
+    HomeTabName.ZIndex = 2
+    HomeTabName.Font = Enum.Font.SourceSansSemibold
+    HomeTabName.Text = "Home"
+    HomeTabName.TextColor3 = Color3.new(1, 1, 1)
+    HomeTabName.TextScaled = true
+    HomeTabName.TextSize = 14
+    HomeTabName.TextStrokeColor3 = Color3.new(1, 1, 1)
+    HomeTabName.TextWrapped = true
+    HomeTabName.TextYAlignment = Enum.TextYAlignment.Bottom
+    local HomeTabLine = Instance.new("Frame", HomeTabNameFrame)
+    HomeTabLine.AnchorPoint = Vector2.new(0, 1)
+    HomeTabLine.BackgroundColor3 = Color3.new(1, 1, 1)
+    HomeTabLine.BorderColor3 = Color3.new(0, 0, 0)
+    HomeTabLine.BorderSizePixel = 0
+    HomeTabLine.Position = UDim2.new(0, 0, 1.00000024, 0)
+    HomeTabLine.Size = UDim2.new(1, -5, 0, 1)
+    local HomeTabButtonFrame = Instance.new("Frame", List)
+    HomeTabButtonFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+    HomeTabButtonFrame.BackgroundTransparency = 1
+    HomeTabButtonFrame.BorderColor3 = Color3.new(0, 0, 0)
+    HomeTabButtonFrame.BorderSizePixel = 0
+    HomeTabButtonFrame.Size = UDim2.new(1, 0, 0, 35)
+    local HomeTabButton = Instance.new("TextButton", HomeTabButtonFrame)
+    HomeTabButton.Name = "Home"
+    HomeTabButton.AnchorPoint = Vector2.new(0.5, 0.5)
+    HomeTabButton.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+    HomeTabButton.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+    HomeTabButton.BorderSizePixel = 0
+    HomeTabButton.Position = UDim2.new(0.5, 0, 0.5, 0)
+    HomeTabButton.Size = UDim2.new(1, -5, 1, -5)
+    HomeTabButton.AutoButtonColor = false
+    HomeTabButton.Font = Enum.Font.SourceSansLight
+    HomeTabButton.Text = "Home"
+    HomeTabButton.TextColor3 = Color3.new(1, 1, 1)
+    HomeTabButton.TextScaled = true
+    HomeTabButton.TextSize = 24
+    HomeTabButton.TextStrokeColor3 = Color3.new(1, 1, 1)
+    HomeTabButton.TextStrokeTransparency = 0.949999988079071
+    HomeTabButton.TextWrapped = true
+
+    local TabsTable = {["Home"] = HomeTabFrame}
+    local CurrentTab = "Home"
     local function switchTab(Tab)
         if TabsTable == {} then return end
         if not TabsTable[Tab] then return end
@@ -146,8 +312,6 @@ function lib:NewWindow(guiName)
 
     function Windowlib:NewTab(TabName)
         if not (type(TabName) == "string") then TabName = "" end
-        local Parent = nil
-        if TabsTable == {} then Parent = MainBackground else Parent = TabsTemp end
         local tabButton = Instance.new("TextButton", List)
         tabButton.Name = TabName
         tabButton.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
@@ -163,7 +327,7 @@ function lib:NewWindow(guiName)
         tabButton.TextStrokeColor3 = Color3.new(1, 1, 1)
         tabButton.TextStrokeTransparency = 0.95
         tabButton.TextWrapped = true
-        local itTabFrame = Instance.new("Frame", Parent)
+        local itTabFrame = Instance.new("Frame", TabsTemp)
         itTabFrame.AnchorPoint = Vector2.new(1, 0)
         itTabFrame.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
         itTabFrame.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
@@ -279,36 +443,30 @@ function lib:NewWindow(guiName)
         function Tablib:NewDivider(Text)
             if not (type(Text) == "string") then Text = "" end
             local newDivider = Instance.new("Frame", itScrollingFrame)
+            newDivider.Parent = itScrollingFrame
             newDivider.BackgroundColor3 = Color3.new(1, 1, 1)
             newDivider.BackgroundTransparency = 1
             newDivider.BorderColor3 = Color3.new(0, 0, 0)
             newDivider.BorderSizePixel = 0
-            newDivider.Size = UDim2.new(1, 0, 0, 27)
+            newDivider.Position = UDim2.new(0, 0, 0.136910275, 0)
+            newDivider.Size = UDim2.new(1, 0, 0, 20)
             newDivider.ZIndex = 2
 
             local newDividerText = Instance.new("TextLabel", newDivider)
-            newDividerText.AnchorPoint = Vector2.new(1, 0)
+            newDividerText.AnchorPoint = Vector2.new(0, 1)
             newDividerText.BackgroundColor3 = Color3.new(1, 1, 1)
             newDividerText.BackgroundTransparency = 1
             newDividerText.BorderColor3 = Color3.new(1, 1, 1)
             newDividerText.BorderSizePixel = 0
-            newDividerText.Position = UDim2.new(1, 0, 0, 0)
-            newDividerText.Size = UDim2.new(1, -5, 1, 0)
+            newDividerText.Position = UDim2.new(0, 10, 1, 4)
+            newDividerText.Size = UDim2.new(1, -10, 0.75, 0)
             newDividerText.Font = Enum.Font.SourceSansLight
-            newDividerText.Text = Text
+            newDividerText.Text = "A Divider"
             newDividerText.TextColor3 = Color3.new(1, 1, 1)
-            newDividerText.TextScaled = true
-            newDividerText.TextSize = 14
+            newDividerText.TextSize = 19
             newDividerText.TextWrapped = true
             newDividerText.TextXAlignment = Enum.TextXAlignment.Left
-            newDividerText.ZIndex = 2
-
-            local newDividerLine = Instance.new("Frame", newDivider)
-            newDividerLine.BackgroundColor3 = Color3.new(0.639216, 0.639216, 0.639216)
-            newDividerLine.BorderColor3 = Color3.new(0, 0, 0)
-            newDividerLine.BorderSizePixel = 0
-            newDividerLine.Size = UDim2.new(1, 0, 0, 1)
-            newDividerLine.ZIndex = 2
+            newDividerText.TextYAlignment = Enum.TextYAlignment.Bottom
 
             newDivider.Name = Text
             newDividerText.Text = Text
@@ -390,6 +548,8 @@ function lib:NewWindow(guiName)
                 Callback(newValue)
             end)
             return newToggleState
+        end
+        function Tablib:NewDescription(Text)
         end
         return Tablib
     end
