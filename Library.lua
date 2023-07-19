@@ -297,6 +297,7 @@ function lib:NewWindow(guiName)
     local function switchTab(Tab)
         if TabsTable == {} then return end
         if not TabsTable[Tab] then return end
+        if CurrentTab == Tab then return end
         local clickedTabFrame = TabsTable[Tab][1]
         local clickedTabButtonFrame = TabsTable[Tab][2]
         local currentTabFrame, currentTabButtonFrame = nil, nil
@@ -310,6 +311,9 @@ function lib:NewWindow(guiName)
         TweenService:Create(clickedTabButtonFrame.Stroke.UIStroke, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Color = buttonColorsTable[true]}):Play()
         clickedTabFrame.Parent = MainBackground
     end
+    HomeTabButton.MouseButton1Click:Connect(function()
+        switchTab(HomeTabButton)
+    end)
 
     --Ui Closing
     local guiState = true
@@ -458,7 +462,6 @@ function lib:NewWindow(guiName)
         itUiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
         itUiListLayout.Padding = UDim.new(0, 5)
         
-        if itTabFrame.Parent == MainBackground then CurrentTab = itTabFrame.Name end
         TabsTable[itTabButton] = {itTabFrame, itTabButtonFrame}
         itTabButton.MouseButton1Click:Connect(function()
             switchTab(itTabButton)
