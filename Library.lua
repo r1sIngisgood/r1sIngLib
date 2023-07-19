@@ -290,7 +290,7 @@ function lib:NewWindow(guiName)
     HomeTabButtonStrokeFrameUIStroke.Color = Color3.fromRGB(125,125,125)
 
     HomeTabFrame.Parent = MainBackground
-    local TabsTable = {["Home"] = {HomeTabFrame, HomeTabButtonFrame}}
+    local TabsTable = {[HomeTabButton] = {HomeTabFrame, HomeTabButtonFrame}}
     local buttonColorsTable = {[false] = Color3.fromRGB(75,75,75), [true] = Color3.fromRGB(125,125,125)}
     local CurrentTab = "Home"
     local function switchTab(Tab)
@@ -303,11 +303,11 @@ function lib:NewWindow(guiName)
             currentTabFrame = TabsTable[CurrentTab][1]
             currentTabButtonFrame = TabsTable[CurrentTab][2]
             TweenService:Create(currentTabButtonFrame.Stroke.UIStroke, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Color = buttonColorsTable[false]}):Play()
+            currentTabFrame.Parent = TabsTemp
         end
-        TweenService:Create(clickedTabButtonFrame.Stroke.UIStroke, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Color = buttonColorsTable[true]}):Play()
         CurrentTab = Tab
+        TweenService:Create(clickedTabButtonFrame.Stroke.UIStroke, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Color = buttonColorsTable[true]}):Play()
         clickedTabFrame.Parent = MainBackground
-        currentTabFrame.Parent = TabsTemp
     end
 
     --Ui Closing
@@ -458,9 +458,9 @@ function lib:NewWindow(guiName)
         itUiListLayout.Padding = UDim.new(0, 5)
         
         if itTabFrame.Parent == MainBackground then CurrentTab = itTabFrame.Name end
-        TabsTable[itTabButton.Name] = {itTabFrame, itTabButtonFrame}
+        TabsTable[itTabButton] = {itTabFrame, itTabButtonFrame}
         itTabButton.MouseButton1Click:Connect(function()
-            switchTab(TabName)
+            switchTab(itTabButton)
         end)
 
         local Tablib = {}
