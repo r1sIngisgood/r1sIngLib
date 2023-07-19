@@ -457,7 +457,7 @@ function lib:NewWindow(guiName)
         itUiListLayout.Padding = UDim.new(0, 5)
         
         if itTabFrame.Parent == MainBackground then CurrentTab = itTabFrame.Name end
-        TabsTable[itTabButton.Name] = itTabFrame
+        TabsTable[itTabButton.Name] = {itTabFrame, itTabButtonFrame}
         itTabButton.MouseButton1Click:Connect(function()
             switchTab(TabName)
         end)
