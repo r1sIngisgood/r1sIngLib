@@ -141,6 +141,8 @@ function lib:NewWindow(guiName)
     HomeFrame.BorderSizePixel = 0
     HomeFrame.Size = UDim2.new(1, -5, 0, 100)
     HomeFrame.ZIndex = 2
+    local HomeFrameUICorner = Instance.new("UICorner", HomeFrame)
+    HomeFrameUICorner.CornerRadius = UDim.new(1,0)
     local HomeBackground = Instance.new("Frame", HomeFrame)
     HomeBackground.AnchorPoint = Vector2.new(0.5, 0.5)
     HomeBackground.BackgroundColor3 = Color3.new(0.290196, 0.290196, 0.290196)
@@ -208,6 +210,8 @@ function lib:NewWindow(guiName)
     HomeDiscordButton.TextSize = 14
     HomeDiscordButton.TextWrapped = true
     HomeDiscordButton.ZIndex = 2
+    local HomeDiscordButtonUICorner = Instance.new("UICorner", HomeDiscordButton)
+    HomeDiscordButtonUICorner.CornerRadius = UDim.new(1,0)
     local HomeTabNameFrame = Instance.new("Frame", HomeTabFrame)
     HomeTabNameFrame.BackgroundColor3 = Color3.new(1, 1, 1)
     HomeTabNameFrame.BackgroundTransparency = 1
