@@ -149,7 +149,7 @@ function lib:NewWindow(guiName)
     HomeBackground.Position = UDim2.new(0.5, 0, 0.5, 0)
     HomeBackground.Size = UDim2.new(1, -10, 1, 0)
     HomeBackground.ZIndex = 2
-    local HomeBackgroundUICorner = Instance.new("UICorner", HomeFrame)
+    local HomeBackgroundUICorner = Instance.new("UICorner", HomeBackground)
     HomeBackgroundUICorner.CornerRadius = UDim.new(0,8)
     local HomeUserImage = Instance.new("ImageLabel", HomeBackground)
     HomeUserImage.AnchorPoint = Vector2.new(0, 0.5)
