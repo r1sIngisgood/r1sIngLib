@@ -625,6 +625,9 @@ function lib:NewWindow(guiName)
             newToggleBackgroundInner.ZIndex = 2
             local newToggleCornerFrameUICorner = Instance.new("UICorner", newToggleCornerFrame)
             newToggleCornerFrameUICorner.CornerRadius = UDim.new(0,8)
+            local newToggleCornerFrameUIStroke = Instance.new("UIStroke", newToggleCornerFrame)
+            newToggleCornerFrameUIStroke.Thickness = 1
+            newToggleCornerFrameUIStroke.Color = Color3.fromRGB(140,140,140)
             local newToggleBackgroundInnerUICorner = Instance.new("UICorner", newToggleBackgroundInner)
             newToggleBackgroundInnerUICorner.CornerRadius = UDim.new(0.5,0)
             local newToggleBackgroundUICorner = Instance.new("UICorner", newToggleBackground)
