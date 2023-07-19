@@ -292,7 +292,7 @@ function lib:NewWindow(guiName)
     HomeTabFrame.Parent = MainBackground
     local TabsTable = {[HomeTabButton] = {HomeTabFrame, HomeTabButtonFrame}}
     local buttonColorsTable = {[false] = Color3.fromRGB(75,75,75), [true] = Color3.fromRGB(125,125,125)}
-    local CurrentTab = "Home"
+    local CurrentTab = HomeTabButton
     local function switchTab(Tab)
         if TabsTable == {} then return end
         if not TabsTable[Tab] then return end
