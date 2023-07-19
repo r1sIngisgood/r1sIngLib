@@ -290,7 +290,8 @@ function lib:NewWindow(guiName)
     HomeTabButtonStrokeFrameUIStroke.Color = Color3.fromRGB(125,125,125)
 
     HomeTabFrame.Parent = MainBackground
-    local TabsTable = {[HomeTabButton] = {HomeTabFrame, HomeTabButtonFrame}}
+    local TabsTable = {}
+    TabsTable[HomeTabButton] = {HomeTabFrame, HomeTabButtonFrame}
     local buttonColorsTable = {[false] = Color3.fromRGB(75,75,75), [true] = Color3.fromRGB(125,125,125)}
     local CurrentTab = HomeTabButton
     local function switchTab(Tab)
@@ -376,7 +377,7 @@ function lib:NewWindow(guiName)
         itTabButton.Size = UDim2.new(1, -5, 1, -5)
         itTabButton.AutoButtonColor = false
         itTabButton.Font = Enum.Font.SourceSansLight
-        itTabButton.Text = "Game"
+        itTabButton.Text = TabName
         itTabButton.TextColor3 = Color3.new(1, 1, 1)
         itTabButton.TextScaled = true
         itTabButton.TextSize = 24
