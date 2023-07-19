@@ -563,7 +563,7 @@ function lib:NewWindow(guiName)
             if not (type(Callback) == "function") then Callback = function()end end
             if not (type(Text) == "string") then Text = "" end
             if not (type(defaultState) == "boolean") then defaultState = false end
-            
+            local stateTable = {[true] = UDim2.new(1, -8, 1, -8), [false] = UDim2.new(0,0,0,0)}
             local newToggleFrame = Instance.new("Frame", itScrollingFrame)
             newToggleFrame.BackgroundColor3 = Color3.new(1, 1, 1)
             newToggleFrame.BackgroundTransparency = 1
@@ -625,7 +625,7 @@ function lib:NewWindow(guiName)
             newToggleBackgroundInner.BorderColor3 = Color3.new(0, 0, 0)
             newToggleBackgroundInner.BorderSizePixel = 0
             newToggleBackgroundInner.Position = UDim2.new(0.5, 0, 0.5, 0)
-            newToggleBackgroundInner.Size = UDim2.new(1, -8, 1, -8)
+            newToggleBackgroundInner.Size = stateTable(defaultState)
             newToggleBackgroundInner.ZIndex = 2
             local newToggleCornerFrameUICorner = Instance.new("UICorner", newToggleCornerFrame)
             newToggleCornerFrameUICorner.CornerRadius = UDim.new(0,8)
@@ -640,7 +640,7 @@ function lib:NewWindow(guiName)
             local newToggleState = Instance.new("BoolValue", newToggleButton)
             if defaultState then newToggleState.Value = defaultState end
             
-            local stateTable = {[true] = UDim2.new(1, -8, 1, -8), [false] = UDim2.new(0,0,0,0)}
+            
             newToggleButton.MouseButton1Click:Connect(function()
                 newToggleState.Value = not newToggleState.Value
                 TweenService:Create(newToggleBackgroundInner, TweenInfo.new(0.05, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Size = stateTable[newToggleState.Value]}):Play()
