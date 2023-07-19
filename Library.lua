@@ -307,6 +307,7 @@ function lib:NewWindow(guiName)
         TweenService:Create(clickedTabButtonFrame.Stroke.UIStroke, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Color = buttonColorsTable[true]}):Play()
         CurrentTab = Tab
         clickedTabFrame.Parent = MainBackground
+        currentTabFrame.Parent = TabsTemp
     end
 
     --Ui Closing
