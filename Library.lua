@@ -370,7 +370,7 @@ function lib:NewWindow(guiName)
         itTabButtonFrame.BackgroundTransparency = 1
         itTabButtonFrame.BorderColor3 = Color3.new(0, 0, 0)
         itTabButtonFrame.BorderSizePixel = 0
-        itTabButtonFrame.Size = UDim2.new(1, 0, 0, 35)
+        itTabButtonFrame.Size = UDim2.new(1, -5, 0, 35)
         local itTabButton = Instance.new("TextButton", itTabButtonFrame)
         itTabButton.Name = TabName
         itTabButton.AnchorPoint = Vector2.new(0.5, 0.5)
