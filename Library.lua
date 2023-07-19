@@ -149,6 +149,9 @@ function lib:NewWindow(guiName)
     HomeBackground.Position = UDim2.new(0.5, 0, 0.5, 0)
     HomeBackground.Size = UDim2.new(1, -10, 1, 0)
     HomeBackground.ZIndex = 2
+    local HomeBackgroundUIStroke = Instance.new("UIStroke", HomeBackground)
+    HomeBackgroundUIStroke.Color = Color3.fromRGB(140,140,140)
+    HomeBackgroundUIStroke.Thickness = 1
     local HomeBackgroundUICorner = Instance.new("UICorner", HomeBackground)
     HomeBackgroundUICorner.CornerRadius = UDim.new(0,8)
     local HomeUserImage = Instance.new("ImageLabel", HomeBackground)
@@ -163,6 +166,9 @@ function lib:NewWindow(guiName)
     local HomeUserImageAspectRatio = Instance.new("UIAspectRatioConstraint", HomeUserImage)
     local HomeUserImageUICorner = Instance.new("UICorner", HomeUserImage)
     HomeUserImageUICorner.CornerRadius = UDim.new(1,0)
+    local HomeUserImageUIStroke = Instance.new("UIStroke", HomeBackground)
+    HomeUserImageUIStroke.Color = Color3.fromRGB(63,63,63)
+    HomeUserImageUIStroke.Thickness = 3
     local HomeUsernameText = Instance.new("TextLabel", HomeBackground)
     HomeUsernameText.AnchorPoint = Vector2.new(0, 1)
     HomeUsernameText.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -189,7 +195,7 @@ function lib:NewWindow(guiName)
     HomeDescription.Position = UDim2.new(0.3, 0, 1, 0)
     HomeDescription.Size = UDim2.new(0.6, -10, 1, -30)
     HomeDescription.Font = Enum.Font.SourceSansLight
-    HomeDescription.Text = "Welcome to r1sIngHub"
+    HomeDescription.Text = "Welcome to "..guiName
     HomeDescription.TextColor3 = Color3.new(1, 1, 1)
     HomeDescription.TextSize = 20
     HomeDescription.TextWrapped = true
@@ -268,15 +274,23 @@ function lib:NewWindow(guiName)
     HomeTabButton.TextWrapped = true
 
     HomeTabFrame.Parent = MainBackground
-    local TabsTable = {["Home"] = HomeTabFrame}
+    local TabsTable = {["Home"] = {HomeTabFrame, HomeTabButtonFrame}}
+    local buttonColorsTable = {[false] = Color3.fromRGB(75,75,75), [true] = Color3.fromRGB(125,125,125)}
     local CurrentTab = "Home"
     local function switchTab(Tab)
         if TabsTable == {} then return end
         if not TabsTable[Tab] then return end
-        if CurrentTab ~= nil then TabsTable[CurrentTab].Parent = TabsTemp end
-
+        local clickedTabFrame = TabsTable[Tab][1]
+        local clickedTabButtonFrame = TabsTable[Tab][2]
+        local currentTabFrame, currentTabButtonFrame = nil, nil
+        if TabsTable[CurrentTab] then
+            currentTabFrame = TabsTable[CurrentTab][1]
+            currentTabButtonFrame = TabsTable[CurrentTab][2]
+            TweenService:Create(currentTabButtonFrame.Stroke.UIStroke, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Color = buttonColorsTable[false]}):Play()
+        end
+        TweenService:Create(clickedTabButtonFrame.Stroke.UIStroke, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Color = buttonColorsTable[true]}):Play()
         CurrentTab = Tab
-        TabsTable[Tab].Parent = MainBackground
+        clickedTabFrame.Parent = MainBackground
     end
 
     --Ui Closing
@@ -329,21 +343,31 @@ function lib:NewWindow(guiName)
 
     function Windowlib:NewTab(TabName)
         if not (type(TabName) == "string") then TabName = "" end
-        local tabButton = Instance.new("TextButton", List)
-        tabButton.Name = TabName
-        tabButton.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
-        tabButton.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
-        tabButton.BorderSizePixel = 0
-        tabButton.Size = UDim2.new(1, 0, 0, 30)
-        tabButton.AutoButtonColor = false
-        tabButton.Font = Enum.Font.SourceSansLight
-        tabButton.Text = TabName
-        tabButton.TextColor3 = Color3.new(1, 1, 1)
-        tabButton.TextScaled = true
-        tabButton.TextSize = 24
-        tabButton.TextStrokeColor3 = Color3.new(1, 1, 1)
-        tabButton.TextStrokeTransparency = 0.95
-        tabButton.TextWrapped = true
+        local itTabButtonFrame = Instance.new("Frame", List)
+        itTabButtonFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+        itTabButtonFrame.BackgroundTransparency = 1
+        itTabButtonFrame.BorderColor3 = Color3.new(0, 0, 0)
+        itTabButtonFrame.BorderSizePixel = 0
+        itTabButtonFrame.Size = UDim2.new(1, 0, 0, 35)
+        local itTabButton = Instance.new("TextButton", itTabButtonFrame)
+        itTabButton.Name = TabName
+        itTabButton.AnchorPoint = Vector2.new(0.5, 0.5)
+        itTabButton.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+        itTabButton.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+        itTabButton.BorderSizePixel = 0
+        itTabButton.Position = UDim2.new(0.5, 0, 0.5, 0)
+        itTabButton.Size = UDim2.new(1, -5, 1, -5)
+        itTabButton.AutoButtonColor = false
+        itTabButton.Font = Enum.Font.SourceSansLight
+        itTabButton.Text = TabName
+        itTabButton.TextColor3 = Color3.new(1, 1, 1)
+        itTabButton.TextScaled = true
+        itTabButton.TextSize = 24
+        itTabButton.TextStrokeColor3 = Color3.new(1, 1, 1)
+        itTabButton.TextStrokeTransparency = 0.95
+        itTabButton.TextWrapped = true
+        local itTabButtonUICorner = Instance.new("UICorner", itTabButton)
+        itTabButtonUICorner.CornerRadius = UDim.new(0,8)
         local itTabFrame = Instance.new("Frame", TabsTemp)
         itTabFrame.AnchorPoint = Vector2.new(1, 0)
         itTabFrame.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
@@ -403,8 +427,8 @@ function lib:NewWindow(guiName)
         itUiListLayout.Padding = UDim.new(0, 5)
         
         if itTabFrame.Parent == MainBackground then CurrentTab = itTabFrame.Name end
-        TabsTable[tabButton.Name] = itTabFrame
-        tabButton.MouseButton1Click:Connect(function()
+        TabsTable[itTabButton.Name] = itTabFrame
+        itTabButton.MouseButton1Click:Connect(function()
             switchTab(TabName)
         end)
 
