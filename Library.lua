@@ -255,6 +255,15 @@ function lib:NewWindow(guiName)
     HomeTabButtonFrame.BorderColor3 = Color3.new(0, 0, 0)
     HomeTabButtonFrame.BorderSizePixel = 0
     HomeTabButtonFrame.Size = UDim2.new(1, 0, 0, 35)
+    local HomeTabButtonStrokeFrame = Instance.new("Frame", HomeTabButtonFrame)
+    HomeTabButtonStrokeFrame.Name = "Stroke"
+    HomeTabButtonStrokeFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+    HomeTabButtonStrokeFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+    HomeTabButtonStrokeFrame.BackgroundTransparency = 1
+    HomeTabButtonStrokeFrame.BorderColor3 = Color3.new(0, 0, 0)
+    HomeTabButtonStrokeFrame.BorderSizePixel = 0
+    HomeTabButtonStrokeFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+    HomeTabButtonStrokeFrame.Size = UDim2.new(1, -5, 1, -5)
     local HomeTabButton = Instance.new("TextButton", HomeTabButtonFrame)
     HomeTabButton.Name = "Home"
     HomeTabButton.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -272,6 +281,13 @@ function lib:NewWindow(guiName)
     HomeTabButton.TextStrokeColor3 = Color3.new(1, 1, 1)
     HomeTabButton.TextStrokeTransparency = 0.949999988079071
     HomeTabButton.TextWrapped = true
+    local HomeTabButtonUICorner = Instance.new("UICorner", HomeTabButton)
+    HomeTabButtonUICorner.CornerRadius = UDim.new(0,8)
+    local HomeTabButtonStrokeFrameUICorner = Instance.new("UICorner", HomeTabButtonStrokeFrame)
+    HomeTabButtonStrokeFrameUICorner.CornerRadius = UDim.new(0,8)
+    local HomeTabButtonStrokeFrameUIStroke = Instance.new("UIStroke", HomeTabButtonStrokeFrame)
+    HomeTabButtonStrokeFrameUIStroke.Thickness = 1
+    HomeTabButtonStrokeFrameUIStroke.Color = Color3.fromRGB(125,125,125)
 
     HomeTabFrame.Parent = MainBackground
     local TabsTable = {["Home"] = {HomeTabFrame, HomeTabButtonFrame}}
@@ -359,15 +375,29 @@ function lib:NewWindow(guiName)
         itTabButton.Size = UDim2.new(1, -5, 1, -5)
         itTabButton.AutoButtonColor = false
         itTabButton.Font = Enum.Font.SourceSansLight
-        itTabButton.Text = TabName
+        itTabButton.Text = "Game"
         itTabButton.TextColor3 = Color3.new(1, 1, 1)
         itTabButton.TextScaled = true
         itTabButton.TextSize = 24
         itTabButton.TextStrokeColor3 = Color3.new(1, 1, 1)
-        itTabButton.TextStrokeTransparency = 0.95
+        itTabButton.TextStrokeTransparency = 0.949999988079071
         itTabButton.TextWrapped = true
         local itTabButtonUICorner = Instance.new("UICorner", itTabButton)
         itTabButtonUICorner.CornerRadius = UDim.new(0,8)
+        local itTabButtonStrokeFrame = Instance.new("Frame", itTabButtonFrame)
+        itTabButtonStrokeFrame.Name = "Stroke"
+        itTabButtonStrokeFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+        itTabButtonStrokeFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+        itTabButtonStrokeFrame.BackgroundTransparency = 1
+        itTabButtonStrokeFrame.BorderColor3 = Color3.new(0, 0, 0)
+        itTabButtonStrokeFrame.BorderSizePixel = 0
+        itTabButtonStrokeFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+        itTabButtonStrokeFrame.Size = UDim2.new(1, -5, 1, -5)
+        local itTabButtonStrokeFrameUICorner = Instance.new("UICorner", itTabButtonStrokeFrame)
+        itTabButtonStrokeFrameUICorner.CornerRadius = UDim.new(0,8)
+        local itTabButtonStrokeFrameUIStroke = Instance.new("UIStroke", itTabButtonStrokeFrame)
+        itTabButtonStrokeFrameUIStroke.Thickness = 1
+        itTabButtonStrokeFrameUIStroke.Color = buttonColorsTable[false]
         local itTabFrame = Instance.new("Frame", TabsTemp)
         itTabFrame.AnchorPoint = Vector2.new(1, 0)
         itTabFrame.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
@@ -444,12 +474,27 @@ function lib:NewWindow(guiName)
             newButtonFrame.BorderSizePixel = 0
             newButtonFrame.Size = UDim2.new(1, 0, 0, 27)
             newButtonFrame.ZIndex = 2
-
-            local newButton = Instance.new("TextButton", newButtonFrame)
+            local newButtonCornerFrame = Instance.new("Frame", newButtonFrame)
+            newButtonCornerFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+            newButtonCornerFrame.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+            newButtonCornerFrame.BorderColor3 = Color3.new(0, 0, 0)
+            newButtonCornerFrame.BorderSizePixel = 0
+            newButtonCornerFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+            newButtonCornerFrame.Size = UDim2.new(1, -10, 1, 0)
+            newButtonCornerFrame.Zindex = 2
+            local newButtonCornerFrameUICorner = Instance.new("UICorner", newButtonCornerFrame)
+            newButtonCornerFrameUICorner.CornerRadius = UDim.new(0,8)
+            local newButtonCornerFrameUIStroke = Instance.new("UIStroke", newButtonCornerFrame)
+            newButtonCornerFrameUIStroke.Thickness = 1
+            newButtonCornerFrameUIStroke.Color = Color3.fromRGB(140,140,140)
+            local newButton = Instance.new("TextButton", newButtonCornerFrame)
+            newButton.AnchorPoint = Vector2.new(0, 0.5)
             newButton.BackgroundColor3 = Color3.new(1, 1, 1)
+            newButton.BackgroundTransparency = 1
             newButton.BorderColor3 = Color3.new(0, 0, 0)
             newButton.BorderSizePixel = 0
-            newButton.Size = UDim2.new(0.065, 0, 1, 0)
+            newButton.Position = UDim2.new(0, 0, 0.5, 0)
+            newButton.Size = UDim2.new(1, 0, 1, 0)
             newButton.ZIndex = 2
             newButton.AutoButtonColor = false
             newButton.Font = Enum.Font.SourceSansLight
@@ -459,18 +504,14 @@ function lib:NewWindow(guiName)
             newButton.TextSize = 24
             newButton.TextWrapped = true
             newButton.ZIndex = 2
-
-            local newButtonUICorner = Instance.new("UICorner", newButton)
-            newButtonUICorner.CornerRadius = UDim.new(0,15)
-            local newButtonAspectRatio = Instance.new("UIAspectRatioConstraint", newButton)
-
-            local newButtonText = Instance.new("TextLabel", newButtonFrame)
-            newButtonText.AnchorPoint = Vector2.new(1, 0)
+            local newButtonText = Instance.new("TextLabel", newButtonCornerFrame)
+            newButtonText.AnchorPoint = Vector2.new(0, 0.5)
             newButtonText.BackgroundColor3 = Color3.new(1, 1, 1)
             newButtonText.BackgroundTransparency = 1
+            newButtonText.BorderColor3 = Color3.new(0, 0, 0)
             newButtonText.BorderSizePixel = 0
-            newButtonText.Position = UDim2.new(1, 0, 0, 0)
-            newButtonText.Size = UDim2.new(0.935, -5, 1, 0)
+            newButtonText.Position = UDim2.new(0, 15, 0.5, 0)
+            newButtonText.Size = UDim2.new(1, -10, 1, -6)
             newButtonText.Font = Enum.Font.SourceSansLight
             newButtonText.Text = Text
             newButtonText.TextColor3 = Color3.new(1, 1, 1)
@@ -479,13 +520,11 @@ function lib:NewWindow(guiName)
             newButtonText.TextWrapped = true
             newButtonText.TextXAlignment = Enum.TextXAlignment.Left
             newButtonText.ZIndex = 2
-
             newButton.MouseButton1Click:Connect(Callback)
         end
         function Tablib:NewDivider(Text)
             if not (type(Text) == "string") then Text = "" end
             local newDivider = Instance.new("Frame", itScrollingFrame)
-            newDivider.Parent = itScrollingFrame
             newDivider.BackgroundColor3 = Color3.new(1, 1, 1)
             newDivider.BackgroundTransparency = 1
             newDivider.BorderColor3 = Color3.new(0, 0, 0)
@@ -503,12 +542,13 @@ function lib:NewWindow(guiName)
             newDividerText.Position = UDim2.new(0, 10, 1, 4)
             newDividerText.Size = UDim2.new(1, -10, 0.75, 0)
             newDividerText.Font = Enum.Font.SourceSansLight
-            newDividerText.Text = "A Divider"
+            newDividerText.Text = Text
             newDividerText.TextColor3 = Color3.new(1, 1, 1)
             newDividerText.TextSize = 19
             newDividerText.TextWrapped = true
             newDividerText.TextXAlignment = Enum.TextXAlignment.Left
             newDividerText.TextYAlignment = Enum.TextYAlignment.Bottom
+            newDividerText.ZIndex = 2
 
             newDivider.Name = Text
             newDividerText.Text = Text
@@ -523,16 +563,24 @@ function lib:NewWindow(guiName)
             newToggleFrame.BackgroundTransparency = 1
             newToggleFrame.BorderColor3 = Color3.new(0, 0, 0)
             newToggleFrame.BorderSizePixel = 0
-            newToggleFrame.Size = UDim2.new(1, 0, 0, 27)
+            newToggleFrame.Position = UDim2.new(0, 0, 0.136910275, 0)
+            newToggleFrame.Size = UDim2.new(1, -5, 0, 35)
             newToggleFrame.ZIndex = 2
-            local newToggleText = Instance.new("TextLabel", newToggleFrame)
-            newToggleText.AnchorPoint = Vector2.new(1, 0)
+            local newToggleCornerFrame = Instance.new("Frame", newToggleFrame)
+            newToggleCornerFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+            newToggleCornerFrame.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+            newToggleCornerFrame.BorderColor3 = Color3.new(0, 0, 0)
+            newToggleCornerFrame.BorderSizePixel = 0
+            newToggleCornerFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+            newToggleCornerFrame.Size = UDim2.new(1, -10, 1, 0)
+            local newToggleText = Instance.new("TextLabel", newToggleCornerFrame)
+            newToggleText.AnchorPoint = Vector2.new(1, 0.5)
             newToggleText.BackgroundColor3 = Color3.new(1, 1, 1)
             newToggleText.BackgroundTransparency = 1
             newToggleText.BorderColor3 = Color3.new(1, 1, 1)
             newToggleText.BorderSizePixel = 0
-            newToggleText.Position = UDim2.new(1, 0, 0, 0)
-            newToggleText.Size = UDim2.new(0.879999995, -5, 1, 0)
+            newToggleText.Position = UDim2.new(1, 0, 0.5, 0)
+            newToggleText.Size = UDim2.new(1, -45, 1, -6)
             newToggleText.Font = Enum.Font.SourceSansLight
             newToggleText.Text = Text
             newToggleText.TextColor3 = Color3.new(1, 1, 1)
@@ -541,51 +589,52 @@ function lib:NewWindow(guiName)
             newToggleText.TextWrapped = true
             newToggleText.TextXAlignment = Enum.TextXAlignment.Left
             newToggleText.ZIndex = 2
-            local newToggleButton = Instance.new("TextButton", newToggleFrame)
+            local newToggleButton = Instance.new("TextButton", newToggleCornerFrame)
+            newToggleButton.AnchorPoint = Vector2.new(0, 0.5)
             newToggleButton.BackgroundColor3 = Color3.new(0.478431, 0.478431, 0.478431)
             newToggleButton.BackgroundTransparency = 1
             newToggleButton.BorderColor3 = Color3.new(0, 0, 0)
             newToggleButton.BorderSizePixel = 0
-            newToggleButton.Position = UDim2.new(0, 5, 0, 0)
-            newToggleButton.Size = UDim2.new(-0.022127308, 50, 1, 0)
+            newToggleButton.Position = UDim2.new(0, 0, 0.5, 0)
+            newToggleButton.Size = UDim2.new(1, 0, 1, 0)
             newToggleButton.AutoButtonColor = false
             newToggleButton.Font = Enum.Font.SourceSans
             newToggleButton.Text = ""
             newToggleButton.TextColor3 = Color3.new(0, 0, 0)
             newToggleButton.TextSize = 14
-            newToggleButton.ZIndex = 4
-            local newToggleButtonUICorner = Instance.new("UICorner", newToggleButton)
-            newToggleButtonUICorner.CornerRadius = UDim.new(1,0)
-            local newToggleBack = Instance.new("Frame", newToggleButton)
-            newToggleBack.AnchorPoint = Vector2.new(0, 0.5)
-            newToggleBack.BackgroundColor3 = Color3.new(0.478431, 0.478431, 0.478431)
-            newToggleBack.BorderColor3 = Color3.new(0, 0, 0)
-            newToggleBack.BorderSizePixel = 0
-            newToggleBack.Position = UDim2.new(0, 0, 0.5, 0)
-            newToggleBack.Size = UDim2.new(0, 40, 0, 15)
-            newToggleBack.ZIndex = 2
-            local newToggleBackUICorner = Instance.new("UICorner", newToggleBack)
-            newToggleBackUICorner.CornerRadius = UDim.new(1,0)
-            local newToggleCircle = Instance.new("Frame", newToggleButton)
-            newToggleCircle.Name = "Circle"
-            newToggleCircle.AnchorPoint = Vector2.new(1, 0.5)
-            newToggleCircle.BackgroundColor3 = Color3.new(1, 1, 1)
-            newToggleCircle.BorderColor3 = Color3.new(0, 0, 0)
-            newToggleCircle.BorderSizePixel = 0
-            newToggleCircle.Position = UDim2.new(0.5, 0, 0.5, 0)
-            newToggleCircle.Size = UDim2.new(0, 100, 0, 25)
-            newToggleCircle.ZIndex = 3
-            local newCircleAspectRatio = Instance.new("UIAspectRatioConstraint", newToggleCircle)
-            local newCircleUICorner = Instance.new("UICorner", newToggleCircle)
-            newCircleUICorner.CornerRadius = UDim.new(1,0)
+            newToggleButton.ZIndex = 3
+            local newToggleBackground = Instance.new("Frame", newToggleCornerFrame)
+            newToggleBackground.AnchorPoint = Vector2.new(0, 0.5)
+            newToggleBackground.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+            newToggleBackground.BorderColor3 = Color3.new(0, 0, 0)
+            newToggleBackground.BorderSizePixel = 0
+            newToggleBackground.Position = UDim2.new(0, 10, 0.5, 0)
+            newToggleBackground.Size = UDim2.new(0, 25, 0, 25)
+            newToggleBackground.ZIndex = 2
+            local newToggleBackgroundInner = Instance.new("Frame", newToggleBackground)
+            newToggleBackgroundInner.AnchorPoint = Vector2.new(0.5, 0.5)
+            newToggleBackgroundInner.BackgroundColor3 = Color3.new(1, 1, 1)
+            newToggleBackgroundInner.BackgroundTransparency = 0
+            newToggleBackgroundInner.BorderColor3 = Color3.new(0, 0, 0)
+            newToggleBackgroundInner.BorderSizePixel = 0
+            newToggleBackgroundInner.Position = UDim2.new(0.5, 0, 0.5, 0)
+            newToggleBackgroundInner.Size = UDim2.new(1, -8, 1, -8)
+            newToggleBackgroundInner.ZIndex = 2
+            local newToggleCornerFrameUICorner = Instance.new("UICorner", newToggleCornerFrame)
+            newToggleCornerFrameUICorner.CornerRadius = UDim.new(0,8)
+            local newToggleBackgroundInnerUICorner = Instance.new("UICorner", newToggleBackgroundInner)
+            newToggleBackgroundInnerUICorner.CornerRadius = UDim.new(0.5,0)
+            local newToggleBackgroundUICorner = Instance.new("UICorner", newToggleBackground)
+            newToggleBackgroundUICorner.CornerRadius = UDim.new(0.5,0)
+
 
             local newToggleState = Instance.new("BoolValue", newToggleButton)
             if defaultState then newToggleState.Value = defaultState end
             
-            local stateTable = {[true] = UDim2.new(1,0,.5,0), [false] = UDim2.new(.5,0,.5,0)}
+            local stateTable = {[true] = UDim2.new({1, -8},1, -8), [false] = UDim2.new(0,0,0,0)}
             newToggleButton.MouseButton1Click:Connect(function()
                 newToggleState.Value = not newToggleState.Value
-                TweenService:Create(newToggleCircle, TweenInfo.new(0.05, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Position = stateTable[newToggleState.Value]}):Play()
+                TweenService:Create(newToggleBackgroundInner, TweenInfo.new(0.05, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Size = stateTable[newToggleState.Value]}):Play()
                 local newValue = newToggleState.Value
                 Callback(newValue)
             end)
