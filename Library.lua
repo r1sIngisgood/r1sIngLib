@@ -85,7 +85,7 @@ function lib:NewWindow(guiName)
 
     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-    local HomeTabFrame = Instance.new("Frame", MainBackground)
+    local HomeTabFrame = Instance.new("Frame")
     HomeTabFrame.Name = "HomeTab"
     HomeTabFrame.AnchorPoint = Vector2.new(1, 0)
     HomeTabFrame.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
@@ -251,6 +251,7 @@ function lib:NewWindow(guiName)
     HomeTabButton.TextStrokeTransparency = 0.949999988079071
     HomeTabButton.TextWrapped = true
 
+    HomeTabFrame.Parent = MainBackground
     local TabsTable = {["Home"] = HomeTabFrame}
     local CurrentTab = "Home"
     local function switchTab(Tab)
