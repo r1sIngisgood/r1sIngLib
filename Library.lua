@@ -630,7 +630,6 @@ function lib:NewWindow(guiName)
             local newToggleBackgroundUICorner = Instance.new("UICorner", newToggleBackground)
             newToggleBackgroundUICorner.CornerRadius = UDim.new(0.5,0)
 
-
             local newToggleState = Instance.new("BoolValue", newToggleButton)
             if defaultState then newToggleState.Value = defaultState end
             
