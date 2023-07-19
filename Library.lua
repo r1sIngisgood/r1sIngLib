@@ -574,6 +574,7 @@ function lib:NewWindow(guiName)
             newToggleCornerFrame.BorderSizePixel = 0
             newToggleCornerFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
             newToggleCornerFrame.Size = UDim2.new(1, -10, 1, 0)
+            newToggleCornerFrame.ZIndex = 2
             local newToggleText = Instance.new("TextLabel", newToggleCornerFrame)
             newToggleText.AnchorPoint = Vector2.new(1, 0.5)
             newToggleText.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -632,7 +633,7 @@ function lib:NewWindow(guiName)
             local newToggleState = Instance.new("BoolValue", newToggleButton)
             if defaultState then newToggleState.Value = defaultState end
             
-            local stateTable = {[true] = UDim2.new({1, -8},1, -8), [false] = UDim2.new(0,0,0,0)}
+            local stateTable = {[true] = UDim2.new(1, -8, 1, -8), [false] = UDim2.new(0,0,0,0)}
             newToggleButton.MouseButton1Click:Connect(function()
                 newToggleState.Value = not newToggleState.Value
                 TweenService:Create(newToggleBackgroundInner, TweenInfo.new(0.05, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Size = stateTable[newToggleState.Value]}):Play()
