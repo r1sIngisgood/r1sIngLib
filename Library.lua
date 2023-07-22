@@ -528,9 +528,13 @@ function lib:NewWindow(guiName)
             newButtonText.ZIndex = 2
             newButton.MouseButton1Down:Connect(function()
                 newButtonCornerFrame.BackgroundColor3 = Color3.new(0.45, 0.45, 0.45)
-            end)
-            newButton.MouseButton1Up:Connect(function()
-                newButtonCornerFrame.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+                local con
+                con = UserInputService.InputEnded:Connect(function(input)
+                    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                        newButtonCornerFrame.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+                        con:Disconnect()
+                    end
+                end)
             end)
             newButton.MouseButton1Click:Connect(Callback)
         end
