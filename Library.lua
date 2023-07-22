@@ -649,8 +649,16 @@ function lib:NewWindow(guiName)
 
             local newToggleState = Instance.new("BoolValue", newToggleButton)
             if defaultState then newToggleState.Value = defaultState end
-            
-            
+            newToggleButton.MouseButton1Down:Connect(function()
+                newToggleCornerFrame.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4)
+                local con
+                con = UserInputService.InputEnded:Connect(function(input)
+                    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                        newToggleCornerFrame.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+                        con:Disconnect()
+                    end
+                end)
+            end)
             newToggleButton.MouseButton1Click:Connect(function()
                 newToggleState.Value = not newToggleState.Value
                 TweenService:Create(newToggleBackgroundInner, TweenInfo.new(0.05, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {Size = stateTable[newToggleState.Value]}):Play()
