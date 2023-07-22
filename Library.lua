@@ -500,7 +500,7 @@ function lib:NewWindow(guiName)
             newButton.BorderColor3 = Color3.new(0, 0, 0)
             newButton.BorderSizePixel = 0
             newButton.Position = UDim2.new(0, 0, 0.5, 0)
-            newButton.Size = UDim2.new(1, 0, 1, 0)
+            newButton.Size = UDim2.new(1, -5, 1, 0)
             newButton.ZIndex = 2
             newButton.AutoButtonColor = false
             newButton.Font = Enum.Font.SourceSansLight
