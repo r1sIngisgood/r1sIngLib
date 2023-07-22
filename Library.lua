@@ -105,7 +105,7 @@ function lib:NewWindow(guiName)
     HomeTabScrollingFrame.BorderSizePixel = 0
     HomeTabScrollingFrame.Position = UDim2.new(0, 0, 1, 0)
     HomeTabScrollingFrame.Size = UDim2.new(1, 0, 1, -30)
-    HomeTabScrollingFrame.CanvasPosition = Vector2.new(0, 150)
+    HomeTabScrollingFrame.CanvasPosition = Vector2.new(0, 0)
     HomeTabScrollingFrame.ScrollBarThickness = 5
     HomeTabScrollingFrame.ZIndex = 2
     local HomeTabUIListLayout = Instance.new("UIListLayout", HomeTabScrollingFrame)
@@ -477,7 +477,7 @@ function lib:NewWindow(guiName)
             newButtonFrame.BackgroundTransparency = 1
             newButtonFrame.BorderColor3 = Color3.new(0, 0, 0)
             newButtonFrame.BorderSizePixel = 0
-            newButtonFrame.Size = UDim2.new(1, 0, 0, 27)
+            newButtonFrame.Size = UDim2.new(1, -5, 0, 27)
             newButtonFrame.ZIndex = 2
             local newButtonCornerFrame = Instance.new("Frame", newButtonFrame)
             newButtonCornerFrame.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -500,7 +500,7 @@ function lib:NewWindow(guiName)
             newButton.BorderColor3 = Color3.new(0, 0, 0)
             newButton.BorderSizePixel = 0
             newButton.Position = UDim2.new(0, 0, 0.5, 0)
-            newButton.Size = UDim2.new(1, -5, 1, 0)
+            newButton.Size = UDim2.new(1, 0, 1, 0)
             newButton.ZIndex = 2
             newButton.AutoButtonColor = false
             newButton.Font = Enum.Font.SourceSansLight
