@@ -9,8 +9,9 @@ local UserInputService = game:GetService("UserInputService")
 
 local lib = {}
 
-function lib:NewWindow(guiName)
+function lib:NewWindow(guiName, discordLink)
     if not (type(guiName) == "string") then guiName = "r1sIngLib" end
+    if not (type(discordLink) == "string") then discordLink = "" end
 
     local Window = Instance.new("ScreenGui", game.CoreGui)
     local TopBar = Instance.new("Frame", Window)
@@ -288,6 +289,11 @@ function lib:NewWindow(guiName)
     local HomeTabButtonStrokeFrameUIStroke = Instance.new("UIStroke", HomeTabButtonStrokeFrame)
     HomeTabButtonStrokeFrameUIStroke.Thickness = 1
     HomeTabButtonStrokeFrameUIStroke.Color = Color3.fromRGB(125,125,125)
+    HomeDiscordButton.MouseButton1Click:Connect(function()
+        if not(type(discordLink) == "string") then discordLink = "" return end
+        if discordLink == "" then return end
+        setclipboard(discordLink)
+    end)
 
     HomeTabFrame.Parent = MainBackground
     local TabsTable = {}
@@ -672,7 +678,12 @@ function lib:NewWindow(guiName)
         return Tablib
     end
     function Windowlib:ChangeName(Text)
+        if not (type(Text) == "string") then Text = "r1sIngLib" end
         GuiName.Text = Text
+    end
+    function Windowlib:ChangeDiscordLink(Link)
+        if not (type(Link) == "string") then Link = "" end
+        discordLink = Link
     end
     return Windowlib
 end
