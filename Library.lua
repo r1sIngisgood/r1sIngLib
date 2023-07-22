@@ -527,7 +527,7 @@ function lib:NewWindow(guiName)
             newButtonText.TextXAlignment = Enum.TextXAlignment.Left
             newButtonText.ZIndex = 2
             newButton.MouseButton1Down:Connect(function()
-                newButtonCornerFrame.BackgroundColor3 = Color3.new(0.45, 0.45, 0.45)
+                newButtonCornerFrame.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4)
                 local con
                 con = UserInputService.InputEnded:Connect(function(input)
                     if input.UserInputType == Enum.UserInputType.MouseButton1 then
