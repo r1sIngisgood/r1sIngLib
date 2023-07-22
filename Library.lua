@@ -254,7 +254,7 @@ function lib:NewWindow(guiName)
     HomeTabButtonFrame.BackgroundTransparency = 1
     HomeTabButtonFrame.BorderColor3 = Color3.new(0, 0, 0)
     HomeTabButtonFrame.BorderSizePixel = 0
-    HomeTabButtonFrame.Size = UDim2.new(1, 0, 0, 35)
+    HomeTabButtonFrame.Size = UDim2.new(1, -5, 0, 35)
     local HomeTabButtonStrokeFrame = Instance.new("Frame", HomeTabButtonFrame)
     HomeTabButtonStrokeFrame.Name = "Stroke"
     HomeTabButtonStrokeFrame.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -481,7 +481,7 @@ function lib:NewWindow(guiName)
             newButtonFrame.ZIndex = 2
             local newButtonCornerFrame = Instance.new("Frame", newButtonFrame)
             newButtonCornerFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-            newButtonCornerFrame.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+            newButtonCornerFrame.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
             newButtonCornerFrame.BorderColor3 = Color3.new(0, 0, 0)
             newButtonCornerFrame.BorderSizePixel = 0
             newButtonCornerFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -526,6 +526,12 @@ function lib:NewWindow(guiName)
             newButtonText.TextWrapped = true
             newButtonText.TextXAlignment = Enum.TextXAlignment.Left
             newButtonText.ZIndex = 2
+            newButton.MouseButton1Down:Connect(function()
+                newButtonCornerFrame.BackgroundColor3 = Color3.new(0.45, 0.45, 0.45)
+            end)
+            newButton.MouseButton1Up:Connect(function()
+                newButtonCornerFrame.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+            end)
             newButton.MouseButton1Click:Connect(Callback)
         end
         function Tablib:NewDivider(Text)
