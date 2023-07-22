@@ -294,6 +294,16 @@ function lib:NewWindow(guiName, discordLink)
         if discordLink == "" then return end
         setclipboard(discordLink)
     end)
+    HomeDiscordButton.MouseButton1Down:Connect(function()
+        HomeDiscordButton.BackgroundColor3 = Color3.new(0.337255, 0.384314, 0.964706)
+        local con
+        con = UserInputService.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                HomeDiscordButton.BackgroundColor3 = Color3.new(0.4, 0.42, 1)
+                con:Disconnect()
+            end
+        end)
+    end)
 
     HomeTabFrame.Parent = MainBackground
     local TabsTable = {}
