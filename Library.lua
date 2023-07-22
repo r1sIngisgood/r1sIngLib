@@ -305,6 +305,12 @@ function lib:NewWindow(guiName, discordLink)
         end)
     end)
 
+    local HomeLib = {}
+    function HomeLib:AddText(Text)
+        if not(type(Text) == "string") then return end
+        HomeDescription.Text = HomeDescription.Text.."<br />"..Text
+    end
+
     HomeTabFrame.Parent = MainBackground
     local TabsTable = {}
     TabsTable[HomeTabButton] = {HomeTabFrame, HomeTabButtonFrame}
@@ -683,8 +689,6 @@ function lib:NewWindow(guiName, discordLink)
             end)
             return newToggleState
         end
-        function Tablib:NewDescription(Text)
-        end
         return Tablib
     end
     function Windowlib:ChangeName(Text)
@@ -694,6 +698,9 @@ function lib:NewWindow(guiName, discordLink)
     function Windowlib:ChangeDiscordLink(Link)
         if not (type(Link) == "string") then Link = "" end
         discordLink = Link
+    end
+    function Windowlib:GetHomeLib()
+        return HomeLib
     end
     return Windowlib
 end
