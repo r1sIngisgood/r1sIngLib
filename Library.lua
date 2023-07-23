@@ -200,6 +200,7 @@ function lib:NewWindow(guiName, discordLink)
     HomeDescription.TextColor3 = Color3.new(1, 1, 1)
     HomeDescription.TextSize = 20
     HomeDescription.TextWrapped = true
+    HomeDescription.RichText = true
     HomeDescription.TextXAlignment = Enum.TextXAlignment.Left
     HomeDescription.TextYAlignment = Enum.TextYAlignment.Top
     HomeDescription.ZIndex = 2
@@ -396,7 +397,7 @@ function lib:NewWindow(guiName, discordLink)
         local itTabButton = Instance.new("TextButton", itTabButtonFrame)
         itTabButton.Name = TabName
         itTabButton.AnchorPoint = Vector2.new(0.5, 0.5)
-        itTabButton.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+        itTabButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
         itTabButton.BorderColor3 = Color3.new(0.137255, 0.137255, 0.137255)
         itTabButton.BorderSizePixel = 0
         itTabButton.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -484,6 +485,18 @@ function lib:NewWindow(guiName, discordLink)
         itUiListLayout.SortOrder = Enum.SortOrder.LayoutOrder
         itUiListLayout.Padding = UDim.new(0, 5)
         
+        itTabButton.MouseButton1Down:Connect(function()
+            itTabButton.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4)
+            local con
+            con = UserInputService.InputEnded:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                    itTabButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+                    con:Disconnect()
+                end
+            end)
+        end)
+    
+
         TabsTable[itTabButton] = {itTabFrame, itTabButtonFrame}
         itTabButton.MouseButton1Click:Connect(function()
             switchTab(itTabButton)
@@ -606,7 +619,7 @@ function lib:NewWindow(guiName, discordLink)
             newToggleFrame.ZIndex = 2
             local newToggleCornerFrame = Instance.new("Frame", newToggleFrame)
             newToggleCornerFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-            newToggleCornerFrame.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+            newToggleCornerFrame.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
             newToggleCornerFrame.BorderColor3 = Color3.new(0, 0, 0)
             newToggleCornerFrame.BorderSizePixel = 0
             newToggleCornerFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
