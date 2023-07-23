@@ -341,12 +341,12 @@ function lib:NewWindow(guiName, discordLink)
         local newHomeTextBackgroundUICorner = Instance.new("UICorner", newHomeTextBackground)
         newHomeTextBackgroundUICorner.CornerRadius = UDim.new(0,8)
         local newHomeText = Instance.new("TextLabel", newHomeTextBackground)
-        newHomeText.AnchorPoint = Vector2.new(0, 1)
+        newHomeText.AnchorPoint = Vector2.new(0.5, 0.5)
         newHomeText.BackgroundColor3 = Color3.new(1, 1, 1)
         newHomeText.BackgroundTransparency = 1
         newHomeText.BorderColor3 = Color3.new(0, 0, 0)
         newHomeText.BorderSizePixel = 0
-        newHomeText.Position = UDim2.new(10, 0, 1, 0)
+        newHomeText.Position = UDim2.new(.5, 0, .5, 0)
         newHomeText.Size = UDim2.new(1, -10, 1, -20)
         newHomeText.Font = Enum.Font.SourceSansLight
         newHomeText.Text = Text
