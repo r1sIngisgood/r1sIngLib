@@ -306,6 +306,16 @@ function lib:NewWindow(guiName, discordLink)
             end
         end)
     end)
+    HomeTabButton.MouseButton1Down:Connect(function()
+        HomeTabButton.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4)
+        local con
+        con = UserInputService.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                HomeTabButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+                con:Disconnect()
+            end
+        end)
+    end)
 
     local HomeLib = {}
     function HomeLib:AddText(Text)
@@ -336,7 +346,7 @@ function lib:NewWindow(guiName, discordLink)
         newHomeText.BackgroundTransparency = 1
         newHomeText.BorderColor3 = Color3.new(0, 0, 0)
         newHomeText.BorderSizePixel = 0
-        newHomeText.Position = UDim2.new(0.3, 0, 1, 0)
+        newHomeText.Position = UDim2.new(0, 0, 1, 0)
         newHomeText.Size = UDim2.new(1, -10, 1, -10)
         newHomeText.Font = Enum.Font.SourceSansLight
         newHomeText.Text = Text
