@@ -309,7 +309,44 @@ function lib:NewWindow(guiName, discordLink)
     local HomeLib = {}
     function HomeLib:AddText(Text)
         if not(type(Text) == "string") then return end
-        HomeDescription.Text = HomeDescription.Text.."<br />"..Text
+        local newHomeText = Instance.new("TextLabel")
+        newHomeText.AnchorPoint = Vector2.new(0, 1)
+        newHomeText.BackgroundColor3 = Color3.new(1, 1, 1)
+        newHomeText.BackgroundTransparency = 1
+        newHomeText.BorderColor3 = Color3.new(0, 0, 0)
+        newHomeText.BorderSizePixel = 0
+        newHomeText.Position = UDim2.new(0.3, 0, 1, 0)
+        newHomeText.Size = UDim2.new(0.6, -10, 1, -30)
+        newHomeText.Font = Enum.Font.SourceSansLight
+        newHomeText.Text = Text
+        newHomeText.TextColor3 = Color3.new(1, 1, 1)
+        newHomeText.TextSize = 20
+        newHomeText.TextWrapped = true
+        newHomeText.RichText = true
+        newHomeText.TextXAlignment = Enum.TextXAlignment.Left
+        newHomeText.TextYAlignment = Enum.TextYAlignment.Top
+        newHomeText.ZIndex = 2
+        local newHomeTextFrame = Instance.new("Frame", HomeTabScrollingFrame)
+        newHomeTextFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+        newHomeTextFrame.BackgroundTransparency = 1
+        newHomeTextFrame.BorderColor3 = Color3.new(0, 0, 0)
+        newHomeTextFrame.BorderSizePixel = 0
+        newHomeTextFrame.Size = UDim2.new(1, -5, 0, newHomeText.TextBounds.Y + 10)
+        newHomeTextFrame.ZIndex = 2
+        local newHomeTextBackground = Instance.new("Frame", newHomeTextFrame)
+        newHomeTextBackground.AnchorPoint = Vector2.new(0.5, 0.5)
+        newHomeTextBackground.BackgroundColor3 = Color3.new(0.290196, 0.290196, 0.290196)
+        newHomeTextBackground.BorderColor3 = Color3.new(0, 0, 0)
+        newHomeTextBackground.BorderSizePixel = 0
+        newHomeTextBackground.Position = UDim2.new(0.5, 0, 0.5, 0)
+        newHomeTextBackground.Size = UDim2.new(1, -10, 1, 0)
+        newHomeTextBackground.ZIndex = 2
+        local newHomeTextBackgroundUIStroke = Instance.new("UIStroke", newHomeTextBackground)
+        newHomeTextBackgroundUIStroke.Color = Color3.fromRGB(140,140,140)
+        newHomeTextBackgroundUIStroke.Thickness = 1
+        local newHomeTextBackgroundUICorner = Instance.new("UICorner", newHomeTextBackground)
+        newHomeTextBackgroundUICorner.CornerRadius = UDim.new(0,8)
+        newHomeText.Parent = newHomeTextBackground
     end
 
     HomeTabFrame.Parent = MainBackground
