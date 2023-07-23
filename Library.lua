@@ -354,7 +354,7 @@ function lib:NewWindow(guiName, discordLink)
         newHomeText.TextSize = 20
         newHomeText.TextWrapped = true
         newHomeText.RichText = true
-        newHomeText.TextXAlignment = Enum.TextXAlignment.Left
+        newHomeText.TextXAlignment = Enum.TextXAlignment.Left --dfgjhfghjfghj
         newHomeText.TextYAlignment = Enum.TextYAlignment.Top
         newHomeText.ZIndex = 2
         if not newHomeText.TextFits then
