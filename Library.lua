@@ -346,14 +346,13 @@ function lib:NewWindow(guiName, discordLink)
         newHomeText.BackgroundTransparency = 1
         newHomeText.BorderColor3 = Color3.new(0, 0, 0)
         newHomeText.BorderSizePixel = 0
-        newHomeText.Position = UDim2.new(0, 0, 1, 0)
-        newHomeText.Size = UDim2.new(1, -10, 1, -10)
+        newHomeText.Position = UDim2.new(10, 0, 1, 0)
+        newHomeText.Size = UDim2.new(1, -10, 1, -20)
         newHomeText.Font = Enum.Font.SourceSansLight
         newHomeText.Text = Text
         newHomeText.TextColor3 = Color3.new(1, 1, 1)
         newHomeText.TextSize = 20
         newHomeText.TextWrapped = true
-        newHomeText.TextScaled = true
         newHomeText.RichText = true
         newHomeText.TextXAlignment = Enum.TextXAlignment.Left
         newHomeText.TextYAlignment = Enum.TextYAlignment.Top
