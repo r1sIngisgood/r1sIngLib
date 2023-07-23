@@ -321,6 +321,7 @@ function lib:NewWindow(guiName, discordLink)
     function HomeLib:AddText(Text)
         if not(type(Text) == "string") then return end
         local newHomeTextFrame = Instance.new("Frame", HomeTabScrollingFrame)
+        newHomeTextFrame.AutomaticSize = Enum.AutomaticSize.Y
         newHomeTextFrame.BackgroundColor3 = Color3.new(1, 1, 1)
         newHomeTextFrame.BackgroundTransparency = 1
         newHomeTextFrame.BorderColor3 = Color3.new(0, 0, 0)
@@ -329,6 +330,7 @@ function lib:NewWindow(guiName, discordLink)
         newHomeTextFrame.ZIndex = 2
         local newHomeTextBackground = Instance.new("Frame", newHomeTextFrame)
         newHomeTextBackground.AnchorPoint = Vector2.new(0.5, 0.5)
+        newHomeTextBackground.AutomaticSize = Enum.AutomaticSize.Y
         newHomeTextBackground.BackgroundColor3 = Color3.new(0.290196, 0.290196, 0.290196)
         newHomeTextBackground.BorderColor3 = Color3.new(0, 0, 0)
         newHomeTextBackground.BorderSizePixel = 0
