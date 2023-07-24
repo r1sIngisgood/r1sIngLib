@@ -1,7 +1,7 @@
 --[[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/r1sIngisgood/r1sIngLib/main/Library.lua"))()
 ]]--
-getgenv().hubConfiguration = {["Font"] = Enum.Font.CodeLight}
+getgenv().hubConfiguration = {["Font"] = Enum.Font.Code}
 local localPlayer = game:GetService("Players").LocalPlayer
 local mouse = localPlayer:GetMouse()
 local TweenService = game:GetService("TweenService")
@@ -60,7 +60,7 @@ function lib:NewWindow(guiName, discordLink)
     GuiName.Position = UDim2.new(0, 5, 0.5, 0)
     GuiName.Size = UDim2.new(0, 135, 1, 0)
     GuiName.ZIndex = 2
-    GuiName.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+    GuiName.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
     GuiName.Text = guiName
     GuiName.TextColor3 = Color3.new(1, 1, 1)
     GuiName.TextScaled = true
@@ -128,7 +128,7 @@ function lib:NewWindow(guiName, discordLink)
     HomeTabDividerText.BorderSizePixel = 0
     HomeTabDividerText.Position = UDim2.new(0, 10, 1, 4)
     HomeTabDividerText.Size = UDim2.new(1, -10, 0.75, 0)
-    HomeTabDividerText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+    HomeTabDividerText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
     HomeTabDividerText.Text = "Home"
     HomeTabDividerText.TextColor3 = Color3.new(1, 1, 1)
     HomeTabDividerText.TextSize = 19
@@ -196,7 +196,7 @@ function lib:NewWindow(guiName, discordLink)
     HomeDescription.BorderSizePixel = 0
     HomeDescription.Position = UDim2.new(0.3, 0, 1, 0)
     HomeDescription.Size = UDim2.new(0.6, -10, 1, -30)
-    HomeDescription.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+    HomeDescription.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
     HomeDescription.Text = "Welcome to "..guiName
     HomeDescription.TextColor3 = Color3.new(1, 1, 1)
     HomeDescription.TextSize = 20
@@ -276,7 +276,7 @@ function lib:NewWindow(guiName, discordLink)
     HomeTabButton.Position = UDim2.new(0.5, 0, 0.5, 0)
     HomeTabButton.Size = UDim2.new(1, -5, 1, -5)
     HomeTabButton.AutoButtonColor = false
-    HomeTabButton.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+    HomeTabButton.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
     HomeTabButton.Text = "Home"
     HomeTabButton.TextColor3 = Color3.new(1, 1, 1)
     HomeTabButton.TextScaled = true
@@ -348,7 +348,7 @@ function lib:NewWindow(guiName, discordLink)
         newHomeText.BorderSizePixel = 0
         newHomeText.Position = UDim2.new(.5, 0, .5, 0)
         newHomeText.Size = UDim2.new(1, -10, 1, -20)
-        newHomeText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+        newHomeText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
         newHomeText.Text = Text
         newHomeText.TextColor3 = Color3.new(1, 1, 1)
         newHomeText.TextSize = 20
@@ -453,7 +453,7 @@ function lib:NewWindow(guiName, discordLink)
         itTabButton.Position = UDim2.new(0.5, 0, 0.5, 0)
         itTabButton.Size = UDim2.new(1, -5, 1, -5)
         itTabButton.AutoButtonColor = false
-        itTabButton.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+        itTabButton.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
         itTabButton.Text = TabName
         itTabButton.TextColor3 = Color3.new(1, 1, 1)
         itTabButton.TextScaled = true
@@ -503,7 +503,7 @@ function lib:NewWindow(guiName, discordLink)
         itTabName.BorderSizePixel = 0
         itTabName.Size = UDim2.new(1, 0, 1, 0)
         itTabName.ZIndex = 2
-        itTabName.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+        itTabName.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
         itTabName.Text = TabName
         itTabName.TextColor3 = Color3.new(1, 1, 1)
         itTabName.TextScaled = true
@@ -589,7 +589,7 @@ function lib:NewWindow(guiName, discordLink)
             newButton.Size = UDim2.new(1, 0, 1, 0)
             newButton.ZIndex = 2
             newButton.AutoButtonColor = false
-            newButton.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+            newButton.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
             newButton.Text = ""
             newButton.TextColor3 = Color3.new(0, 0, 0)
             newButton.TextScaled = true
@@ -604,7 +604,7 @@ function lib:NewWindow(guiName, discordLink)
             newButtonText.BorderSizePixel = 0
             newButtonText.Position = UDim2.new(0, 15, 0.5, 0)
             newButtonText.Size = UDim2.new(1, -10, 1, -6)
-            newButtonText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+            newButtonText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
             newButtonText.Text = Text
             newButtonText.TextColor3 = Color3.new(1, 1, 1)
             newButtonText.TextScaled = true
@@ -643,7 +643,7 @@ function lib:NewWindow(guiName, discordLink)
             newDividerText.BorderSizePixel = 0
             newDividerText.Position = UDim2.new(0, 10, 1, 4)
             newDividerText.Size = UDim2.new(1, -10, 0.75, 0)
-            newDividerText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+            newDividerText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
             newDividerText.Text = Text
             newDividerText.TextColor3 = Color3.new(1, 1, 1)
             newDividerText.TextSize = 19
@@ -684,7 +684,7 @@ function lib:NewWindow(guiName, discordLink)
             newToggleText.BorderSizePixel = 0
             newToggleText.Position = UDim2.new(1, 0, 0.5, 0)
             newToggleText.Size = UDim2.new(1, -45, 1, -6)
-            newToggleText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.CodeLight
+            newToggleText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Code
             newToggleText.Text = Text
             newToggleText.TextColor3 = Color3.new(1, 1, 1)
             newToggleText.TextScaled = true
