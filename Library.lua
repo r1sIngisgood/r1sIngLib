@@ -603,7 +603,7 @@ function lib:NewWindow(guiName, discordLink)
             newButtonText.BorderColor3 = Color3.new(0, 0, 0)
             newButtonText.BorderSizePixel = 0
             newButtonText.Position = UDim2.new(0, 15, 0.5, 0)
-            newButtonText.Size = UDim2.new(1, -10, 1, -6)
+            newButtonText.Size = UDim2.new(1, -10, 1, -8)
             newButtonText.Font = getgenv().hubConfiguration["Font"] or Enum.Font.Jura
             newButtonText.Text = Text
             newButtonText.TextColor3 = Color3.new(1, 1, 1)
