@@ -573,7 +573,6 @@ function lib:NewWindow(guiName, discordLink)
             newButtonCornerFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
             newButtonCornerFrame.Size = UDim2.new(1, -10, 1, 0)
             newButtonCornerFrame.ZIndex = 2
-            --update ples
             local newButtonCornerFrameUICorner = Instance.new("UICorner", newButtonCornerFrame)
             newButtonCornerFrameUICorner.CornerRadius = UDim.new(0,8)
             local newButtonCornerFrameUIStroke = Instance.new("UIStroke", newButtonCornerFrame)
@@ -765,6 +764,10 @@ function lib:NewWindow(guiName, discordLink)
     end
     function Windowlib:GetHomeLib()
         return HomeLib
+    end
+    function Windowlib:SetClipboard(content)
+        if not type(content) == "string" then return end
+        setclipboard(content)
     end
     return Windowlib
 end
